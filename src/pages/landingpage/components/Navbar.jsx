@@ -65,7 +65,7 @@ const MenuDrop = ({ isMenu }) => {
           <a href="#faqs">FAQs</a>
         </li>
         <li className="p-3 mb-1">
-          <Link href="/team">Our Team</Link>
+          <Link to="/team">Our Team</Link>
         </li>
       </ul>
       <Login className="mt-5" />

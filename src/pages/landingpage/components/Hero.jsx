@@ -1,4 +1,4 @@
-import img from "../assets/hero-doctor.png";
+import img from "../../../assets/hero-doctor.png";
 
 const HeroContentHeader = () => {
   return (

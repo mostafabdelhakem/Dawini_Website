@@ -1,5 +1,5 @@
-import doctorImg from "../../../assets/clinic Image.jpg";
-import patientImg from "../../../assets/patient image.jpg";
+import doctorImg from "../assets/clinic Image.jpg";
+import patientImg from "../assets/patient image.jpg";
 
 const Title = () => {
   return <h1 className="section-title gradient-text">Join Now</h1>;

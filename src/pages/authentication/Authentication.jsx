@@ -9,9 +9,9 @@ function Authentication() {
     <div>
       {/* <Login /> */}
       {/* <Switcher /> */}
-      {/* <Signup /> */}
+      <Signup />
       {/* <Signup2 /> */}
-      <Signup3 />
+      {/* <Signup3 /> */}
     </div>
   );
 }

@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
+
+:root {
+  --blue-color: #0077b6;
+  --green-color: #1effbc;
+  --dark-blue-color: #001d3d;
+  --white-color: #edf2fb;
+  --black-color: #000814;
+}
+
+body {
+  @apply text-[var(--black-color)] font-['Nunito'];
+}
+
+section {
+  @apply max-w-[1240px] mx-auto lg:py-12 p-8;
+}
+
+.gradient-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-br from-[var(--blue-color)] to-[var(--green-color)];
+}
+
+.gradient-background {
+  @apply bg-gradient-to-br from-[var(--blue-color)] to-[var(--green-color)];
+}
+
+.btn {
+  @apply font-semibold py-2 px-5 rounded-md bg-gradient-to-br from-[var(--blue-color)] to-[var(--green-color)] text-[var(--white-color)] shadow-sm;
+}
+
+.alt-btn {
+  @apply font-semibold py-2 px-5 border-1 rounded-md text-transparent bg-clip-text bg-gradient-to-br from-[var(--blue-color)] to-[var(--green-color)] shadow-sm;
+}
+
+.tabs a {
+  @apply text-[var(--black-color)];
+}
+
+.tabs a:hover,
+.droplist a:hover {
+  @apply gradient-text;
+}
+
+.section-title {
+  @apply text-4xl font-bold text-center mb-16;
+}
+
+.main-div {
+  @apply w-3/4 max-w-xl md:max-w-2xl m-auto rounded-lg border py-10 px-8;
+}
+
+/* .button {
+  @apply bg-gradient-to-r from-[var(--blue-color)] to-[var(--green-color)] rounded-md w-full py-2 px-6 text-white;
+} */

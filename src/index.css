@@ -50,9 +50,5 @@ section {
 }
 
 .main-div {
-  @apply w-3/4 max-w-xl md:max-w-2xl m-auto rounded-lg border py-10 px-8;
+  @apply w-3/4 max-w-xl md:max-w-2xl m-auto rounded-lg border py-10 px-8 bg-[var(--white-color)];
 }
-
-/* .button {
-  @apply bg-gradient-to-r from-[var(--blue-color)] to-[var(--green-color)] rounded-md w-full py-2 px-6 text-white;
-} */

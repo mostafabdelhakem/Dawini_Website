@@ -33,7 +33,7 @@ section {
 }
 
 .alt-btn {
-  @apply font-semibold py-2 px-5 border-1 rounded-md text-transparent bg-clip-text bg-gradient-to-br from-[var(--blue-color)] to-[var(--green-color)] shadow-sm;
+  @apply font-semibold py-2 px-5 border rounded-md text-transparent bg-clip-text bg-gradient-to-br from-[var(--blue-color)] to-[var(--green-color)] shadow-sm;
 }
 
 .tabs a {
@@ -50,5 +50,5 @@ section {
 }
 
 .main-div {
-  @apply w-3/4 max-w-xl md:max-w-2xl m-auto rounded-lg border py-10 px-8 bg-[var(--white-color)];
+  @apply w-3/4 max-w-xl md:max-w-2xl m-auto rounded-lg border py-10 px-8;
 }

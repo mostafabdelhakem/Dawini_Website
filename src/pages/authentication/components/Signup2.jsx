@@ -38,7 +38,7 @@ const Signup2 = () => {
     return null;
   };
   return (
-    <div className="h-screen w-screen flex ">
+    <div className="h-screen w-screen flex bg-[var(--white-color)]">
       <div className="main-div">
         <h1 className="gradient-text section-title">Upload your ID card</h1>
         <form>

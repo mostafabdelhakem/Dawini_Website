@@ -5,7 +5,7 @@ import { Card } from "./Card";
 
 const Switcher = () => {
   return (
-    <div className="h-screen w-screen flex ">
+    <div className="h-screen w-screen flex bg-[var(--white-color)]">
       <div className="main-div max-w-3xl">
         <h1 className="gradient-text section-title">Join as</h1>
 

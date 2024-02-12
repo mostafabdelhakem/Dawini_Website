@@ -14,7 +14,7 @@ const Login = () => {
   };
   return (
     // main border
-    <div className="h-screen flex">
+    <div className="h-screen flex bg-[var(--white-color)]">
       {/* inner content */}
       <div className="main-div">
         <h1 className="gradient-text section-title">Login to your account</h1>

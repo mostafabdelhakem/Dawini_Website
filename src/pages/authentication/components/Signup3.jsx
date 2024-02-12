@@ -7,7 +7,7 @@ import { Card } from "./Card";
 
 const Signup3 = () => {
   return (
-    <div className="h-screen w-screen flex ">
+    <div className="h-screen w-screen flex bg-[var(--white-color)]">
       <div className="main-div max-w-3xl">
         <h1 className="gradient-text section-title">Choose your Service</h1>
 

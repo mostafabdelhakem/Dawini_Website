@@ -1,16 +1,40 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    const log = { email, password };
-    console.log("Submit");
-    console.log(log);
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    const loginData = { email, password }; // Create login data
+    try {
+      const response = await fetch(
+        "https://a68c-156-221-173-155.ngrok-free.app/api/v1/auth/login",
+        {
+          method: "POST",
+          body: JSON.stringify(loginData),
+        }
+      );
+      if (response.ok) {
+        // Handle successful login (e.g., redirect, store token)
+
+        // const data = await response.json(); // Parse response data
+        
+        // Add conditional navigation if needed (based on roles, etc.)
+        navigate("/"); // Navigate to home page
+      } else {
+        console.error("Login failed:", response.statusText);
+        // Display error message to user
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle errors (e.g., network issues)
+    }
   };
   return (
     // main border
@@ -26,6 +50,7 @@ const Login = () => {
             <input
               className={`w-full p-2  border rounded-lg text-sm mb-5`}
               type="email"
+              required
               placeholder="Your Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -36,6 +61,7 @@ const Login = () => {
             <input
               className={`w-full p-2 border rounded-lg text-sm mb-5`}
               type="password"
+              required
               placeholder="Your Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -56,7 +82,7 @@ const Login = () => {
         </a>
 
         {/* don't have an account */}
-        <a className="m-2 flex justify-center pt-3 underline" href="/switcher">
+        <a className="m-2 flex justify-center pt-3 underline" href="/signup">
           Don't have an account
         </a>
       </div>

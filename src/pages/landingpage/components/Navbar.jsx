@@ -29,10 +29,16 @@ const Tabs = () => {
   );
 };
 
-const Login = () => {
-  return <button className="btn">Login</button>;
-};
-
+// const Login = () => {
+//   return <button className="btn">Login</button>;
+// };
+function Login() {
+  return (
+    <button className="btn">
+      <Link to="/switcher">Login</Link>
+    </button>
+  );
+}
 const MenuIcon = ({ isMenu, handleMenu }) => {
   return (
     <div className="cursor-pointer" onClick={handleMenu}>

@@ -15,7 +15,7 @@ const PersonCard = ({ image, name, title, linkedin, github, brief }) => {
     <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 w-80">
       <img
         src={image}
-        alt="person-image"
+        alt="person-img"
         className="h-24 w-24 rounded-full object-cover"
       />
       <h3 className="text-xl font-bold mt-2">{name}</h3>
@@ -50,7 +50,7 @@ const AllTeam = () => {
       title: "Frontend Developer",
       linkedin: "https://www.linkedin.com/in/mostafa-abdelhakem-64a5551bb/",
       github: "https://github.com/Mostafa-Ahmed-Abdelhakem",
-      brief: "Computer Engineering Student | Curious Learner.",
+      brief: "Computer Engineering Student with some Volunteering experience and different challenges | Curious Learner",
     },
     {
       imgUrl: Salah,

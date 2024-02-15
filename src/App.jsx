@@ -6,6 +6,7 @@ import Signup from "./pages/authentication/components/Signup";
 import Signup2 from "./pages/authentication/components/Signup2";
 import NotFound from "./pages/authentication/components/NotFound";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PatientHome from "./pages/patienthome/PatientHome";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="nurse/signup" element={<Signup />} />
           <Route path="nutritionist/signup" element={<Signup />} />
           <Route path="signup2" element={<Signup2 />} />
+          <Route path="/patienthome" element={<PatientHome />} />
           <Route path="/*" element={<NotFound />} />
 
         </Routes>

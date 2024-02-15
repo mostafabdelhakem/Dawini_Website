@@ -29,9 +29,6 @@ const Tabs = () => {
   );
 };
 
-// const Login = () => {
-//   return <button className="btn">Login</button>;
-// };
 function Login() {
   return (
     <button className="btn">
@@ -105,8 +102,8 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="absolute top-0 left-0 w-full h-20 p-4 text-xl z-20">
-      <div className="nav-wrapper max-w-[1240px] mx-auto flex justify-between items-center ">
+    <nav className="absolute top-0 left-0 w-full h-20 p-4 text-xl z-20 flex items-center">
+      <div className="nav-wrapper max-w-[1240px] w-full mx-auto flex justify-between items-center ">
         <Logo />
         <Tabs />
         <Tailor />

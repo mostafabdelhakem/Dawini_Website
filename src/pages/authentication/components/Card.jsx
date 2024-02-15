@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 export const Card = (props) => {
   const navigate = useNavigate();
+  
   const handleClick = (role) => {
     console.log(role);
-    navigate(`/${role}/signup`);
+    navigate(`/register?role=${role}`);
   };
+
+
   return (
     <button
       onClick={() => handleClick(props.role)}

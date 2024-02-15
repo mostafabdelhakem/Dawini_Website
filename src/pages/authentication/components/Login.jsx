@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -77,19 +78,18 @@ const Login = () => {
         </form>
 
         {/* continue with google */}
-        <a
+        <Link
           className="flex w-full items-center justify-center rounded bg-primary py-2 px-6 mt-4 border"
-          href="/"
-          role="button"
+          to="/login"
         >
           <FaGoogle className="mr-2" size={15} />
           Continue with Google
-        </a>
+        </Link>
 
         {/* don't have an account */}
-        <a className="m-2 flex justify-center pt-3 underline" href="/switcher">
+        <Link className="m-2 flex justify-center pt-3 underline" to="/switcher">
           Don't have an account
-        </a>
+        </Link>
       </div>
     </div>
   );

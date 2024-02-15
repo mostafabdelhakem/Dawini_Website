@@ -29,13 +29,10 @@ const Tabs = () => {
   );
 };
 
-// const Login = () => {
-//   return <button className="btn">Login</button>;
-// };
 function Login() {
   return (
     <button className="btn">
-      <Link to="/switcher">Login</Link>
+      <Link to="/login">Login</Link>
     </button>
   );
 }

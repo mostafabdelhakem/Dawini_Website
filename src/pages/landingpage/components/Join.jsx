@@ -1,5 +1,6 @@
 import doctorImg from "../../../assets/clinic Image.jpg";
 import patientImg from "../../../assets/patient image.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Title = () => {
   return <h1 className="section-title gradient-text">Join Now</h1>;
@@ -10,11 +11,20 @@ const JoinImg = ({ url }) => {
 };
 
 const JoinContent = ({ title, description, btnTxt }) => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <h1 className="gradient-text text-3xl">{title}</h1>
       <p className="text-justify my-8">{description}</p>
-      <button className="btn w-full md:max-w-[300px]">{btnTxt}</button>
+      <button
+        className="btn w-full md:max-w-[300px]"
+        onClick={() => {
+          navigate("/switcher");
+        }}
+      >
+        {btnTxt}
+      </button>
     </div>
   );
 };

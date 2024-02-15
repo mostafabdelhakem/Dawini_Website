@@ -12,29 +12,34 @@ const Login = () => {
     e.preventDefault(); // Prevent default form submission
 
     const loginData = { email, password }; // Create login data
-    try {
-      const response = await fetch(
-        "https://a68c-156-221-173-155.ngrok-free.app/api/v1/auth/login",
-        {
-          method: "POST",
-          body: JSON.stringify(loginData),
-        }
-      );
-      if (response.ok) {
-        // Handle successful login (e.g., redirect, store token)
 
-        // const data = await response.json(); // Parse response data
-        
-        // Add conditional navigation if needed (based on roles, etc.)
-        navigate("/"); // Navigate to home page
-      } else {
-        console.error("Login failed:", response.statusText);
-        // Display error message to user
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      // Handle errors (e.g., network issues)
-    }
+    // for development
+    fetch("", {
+      method: "POST",
+      body: JSON.stringify(loginData),
+    });
+    console.log(loginData);
+    navigate("/");
+
+    // for production
+    // try {
+    //   const response = await fetch(
+    //     "https://a68c-156-221-173-155.ngrok-free.app/api/v1/auth/login",
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify(loginData),
+    //     }
+    //   );
+    //   if (response.ok) {
+
+    //     const role = await response.json(); // Parse response data
+    //     navigate(`/${role}`); // Navigate to role page
+    //   } else {
+    //     console.error("Login failed:", response.statusText);
+    //   }
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
   };
   return (
     // main border
@@ -82,7 +87,7 @@ const Login = () => {
         </a>
 
         {/* don't have an account */}
-        <a className="m-2 flex justify-center pt-3 underline" href="/signup">
+        <a className="m-2 flex justify-center pt-3 underline" href="/switcher">
           Don't have an account
         </a>
       </div>

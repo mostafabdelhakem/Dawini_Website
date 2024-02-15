@@ -38,7 +38,8 @@ const Signup2 = () => {
       method: "POST",
       body: JSON.stringify(frontImage, backImage),
     }).then(() => {
-      navigate("/");
+      console.log("Identity confirmed!");
+      navigate("/login");
     });
   };
 

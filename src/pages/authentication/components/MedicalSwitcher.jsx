@@ -1,18 +1,14 @@
 import React from "react";
-import Patient from "../assets/patient.jpg";
 import Doctor from "../assets/doctor.jpg";
 import Nurse from "../assets/nurse.jpg";
 import { Card } from "./Card";
 
-const Switcher = () => {
+const MedicalSwitcher = () => {
   return (
     <div className="w-screen h-screen flex">
       <div className="main-div max-w-3xl bg-[var(--white-color)]">
+        <h1 className="gradient-text section-title">Choose your service</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div className="gradient-text section-title flex items-center">
-            Choose your category
-          </div>
-          <Card bg={Patient} text="Patient" role="patient" />
           <Card bg={Doctor} text="Doctor" role="doctor" />
           <Card bg={Nurse} text="Nurse" role="nurse" />
         </div>
@@ -21,4 +17,4 @@ const Switcher = () => {
   );
 };
 
-export default Switcher;
+export default MedicalSwitcher;

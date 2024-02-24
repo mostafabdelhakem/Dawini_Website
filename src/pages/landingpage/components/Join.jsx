@@ -10,9 +10,11 @@ const JoinImg = ({ url }) => {
   return <img src={url} alt="" className="w-full h-full object-cover" />;
 };
 
-const JoinContent = ({ title, description, btnTxt }) => {
+const JoinContent = ({ title, description, btnTxt, dest }) => {
   const navigate = useNavigate();
-
+  function onBtnClick(des) {
+    navigate(`/${des}`);
+  }
   return (
     <div>
       <h1 className="gradient-text text-3xl">{title}</h1>
@@ -20,7 +22,7 @@ const JoinContent = ({ title, description, btnTxt }) => {
       <button
         className="btn w-full md:max-w-[300px]"
         onClick={() => {
-          navigate("/switcher");
+          onBtnClick(dest);
         }}
       >
         {btnTxt}
@@ -52,6 +54,7 @@ const JoinGrid = () => {
           title={`As a ${patientDetails.title}`}
           description={patientDetails.description}
           btnTxt={`Join as a ${patientDetails.title} for free`}
+          dest={"register"}
         />
       </div>
       <div className="order-4 md:order-3 w-full h-full md:col-span-3 flex flex-col justify-center">
@@ -59,6 +62,7 @@ const JoinGrid = () => {
           title={`A a ${medicalDetails.title}`}
           description={medicalDetails.description}
           btnTxt={`Join as a ${medicalDetails.title} for free`}
+          dest={"medicalswitcher"}
         />
       </div>
       <div className="order-3 md:order-4 w-full h-[450px] md:col-span-2 flex justify-center items-center rounded-lg overflow-hidden shadow-lg">

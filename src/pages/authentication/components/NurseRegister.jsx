@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const NurseRegister = () => {
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState();
@@ -14,6 +14,7 @@ const Register = () => {
   const [password, setPassword] = useState();
   const [city, setCity] = useState();
   const [birthDate, setBirthDate] = useState();
+  const [skills, setSkills] = useState(null);
   const [frontImage, setFrontImage] = useState(null);
   const [backImage, setBackImage] = useState(null);
 
@@ -71,6 +72,7 @@ const Register = () => {
       password,
       city,
       birthDate,
+      skills,
     ];
     // Concisely check if any field is empty:
     if (inputValues.some((value) => !value)) {
@@ -81,6 +83,7 @@ const Register = () => {
     if (!frontImage || !backImage) {
       return; // Don't navigate if errors exist
     }
+
     // Perform API call (including error handling):
     setTimeout(() => {
       setIsLoading(true);
@@ -196,7 +199,21 @@ const Register = () => {
             onChange={(e) => setBirthDate(e.target.value)}
           />
 
-          {/* ID front */}
+          {/* skills */}
+          <hr />
+          <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
+            List your skills
+          </h1>
+          <input
+            type="list"
+            required
+            className={`w-full p-2 border rounded-md text-sm mb-4 focus:ring-2 focus:ring-primary focus:ring-opacity-50`}
+            placeholder="Skills"
+            value={skills}
+            onChange={(e) => setSkills(e.target.value)}
+          />
+
+          {/* ID */}
           <hr />
           <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
             Upload your ID
@@ -212,8 +229,6 @@ const Register = () => {
               onChange={(event) => handleFileChange(event, "front")}
             />
           </div>
-
-          {/* ID back */}
           <div className="flex items-center space-x-4 mb-4">
             <label htmlFor="photo">Back</label>
             <input
@@ -250,4 +265,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default NurseRegister;

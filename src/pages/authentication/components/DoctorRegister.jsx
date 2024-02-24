@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const DoctorRegister = () => {
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState();
@@ -14,6 +14,9 @@ const Register = () => {
   const [password, setPassword] = useState();
   const [city, setCity] = useState();
   const [birthDate, setBirthDate] = useState();
+  const [description, setDescription] = useState();
+  const [specialization, setSpecialization] = useState();
+  const [fees, setFees] = useState();
   const [frontImage, setFrontImage] = useState(null);
   const [backImage, setBackImage] = useState(null);
 
@@ -71,6 +74,9 @@ const Register = () => {
       password,
       city,
       birthDate,
+      description,
+      specialization,
+      fees,
     ];
     // Concisely check if any field is empty:
     if (inputValues.some((value) => !value)) {
@@ -195,8 +201,41 @@ const Register = () => {
             value={birthDate}
             onChange={(e) => setBirthDate(e.target.value)}
           />
+          {/* additional data */}
+          <hr />
+          <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
+            Complete your data
+          </h1>
+          <textarea
+            required
+            className={`w-full p-2 border rounded-lg text-sm mb-5`}
+            placeholder="Tell us about yourself"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <select
+            required
+            className={`w-full p-2 border rounded-lg text-sm mb-5`}
+            value={specialization}
+            onChange={(e) => setSpecialization(e.target.value)}
+          >
+            <option value="">Select Doctor's Specialization</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Endocrinology">Endocrinology</option>
+            <option value="Gastroenterology">Gastroenterology</option>
+            {/* Add more options as needed */}
+          </select>
+          <input
+            type="number"
+            required
+            className={`w-full p-2 border rounded-lg text-sm mb-5`}
+            placeholder="Enter Doctor's Fees"
+            value={fees}
+            onChange={(e) => setFees(e.target.value)}
+          />
 
-          {/* ID front */}
+          {/* ID */}
           <hr />
           <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
             Upload your ID
@@ -212,8 +251,6 @@ const Register = () => {
               onChange={(event) => handleFileChange(event, "front")}
             />
           </div>
-
-          {/* ID back */}
           <div className="flex items-center space-x-4 mb-4">
             <label htmlFor="photo">Back</label>
             <input
@@ -250,4 +287,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default DoctorRegister;

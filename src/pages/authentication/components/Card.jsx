@@ -6,7 +6,8 @@ export const Card = (props) => {
   
   const handleClick = (role) => {
     console.log(role);
-    navigate(`/register?role=${role}`);
+    // navigate(`/${role}register?role=${role}`);
+    navigate(`/${role}/register`);
   };
 
 

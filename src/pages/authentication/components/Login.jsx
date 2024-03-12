@@ -13,35 +13,38 @@ const Login = () => {
     e.preventDefault(); // Prevent default form submission
 
     const loginData = { email, password }; // Create login data
+    console.log(loginData);
 
     // for development
-    fetch("", {
-      method: "POST",
-      body: JSON.stringify(loginData),
-    });
-    console.log(loginData);
-    navigate("/");
+    // fetch("", {
+    //   method: "POST",
+    //   body: JSON.stringify(loginData),
+    // });
+    // console.log(loginData);
+    // navigate("/");
 
     // for production
-    // try {
-    //   const response = await fetch(
-    //     "https://a68c-156-221-173-155.ngrok-free.app/api/v1/auth/login",
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify(loginData),
-    //     }
-    //   );
-    //   if (response.ok) {
-
-    //     const role = await response.json(); // Parse response data
-    //     navigate(`/${role}`); // Navigate to role page
-    //   } else {
-    //     console.error("Login failed:", response.statusText);
-    //   }
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
+    try {
+      const response = await fetch(
+        "https://4801-156-221-223-24.ngrok-free.app/api/v1/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(loginData),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Login success", data);
+        navigate(`${data.login}`);
+      } else {
+        console.error("Login failed:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
+
   return (
     // main border
     <div className="h-screen flex bg-[var(--white-color)]">

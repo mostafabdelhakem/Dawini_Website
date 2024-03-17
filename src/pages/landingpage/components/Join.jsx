@@ -54,7 +54,7 @@ const JoinGrid = () => {
           title={`As a ${patientDetails.title}`}
           description={patientDetails.description}
           btnTxt={`Join as a ${patientDetails.title} for free`}
-          dest={"register"}
+          dest={"patient/register"}
         />
       </div>
       <div className="order-4 md:order-3 w-full h-full md:col-span-3 flex flex-col justify-center">

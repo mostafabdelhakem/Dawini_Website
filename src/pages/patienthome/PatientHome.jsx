@@ -1,5 +1,5 @@
-import AltNavbar from "./AltNavbar";
-import PatientHero from "./PatientHero";
+import AltNavbar from "./components/AltNavbar";
+import PatientHero from "./components/PatientHero";
 
 const PatientHome = () => {
   return (

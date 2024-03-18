@@ -9,6 +9,9 @@ import DoctorRegister from "./pages/authentication/components/DoctorRegister";
 import NurseRegister from "./pages/authentication/components/NurseRegister";
 import PatientHome from "./pages/patienthome/PatientHome";
 import NotFound from "./pages/authentication/components/NotFound";
+import DrPage from "./pages/providerspages/drpage/DrPage";
+import NursePage from "./pages/providerspages/nursepage/NursePage";
+import PharmacyPage from "./pages/providerspages/pharmacypage/PharmacyPage";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route path="/doctor/register" element={<DoctorRegister />} />
           <Route path="/nurse/register" element={<NurseRegister />} />
           <Route path="/patienthome" element={<PatientHome />} />
+          <Route path="/patienthome/drpage" element={<DrPage />} />
+          <Route path="/patienthome/nursepage" element={<NursePage />} />
+          <Route path="/patienthome/pharmacypage" element={<PharmacyPage />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>

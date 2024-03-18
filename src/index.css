@@ -52,3 +52,7 @@ section {
 .main-div {
   @apply w-3/4 max-w-xl md:max-w-2xl m-auto rounded-lg border py-10 px-8;
 }
+
+.provider-page {
+  @apply xl:absolute xl:left-[50%] xl:translate-x-[-50%] w-full xl:max-w-[1440px] xl:mx-2 xl:my-8 xl:rounded-2xl xl:overflow-hidden xl:shadow-lg;
+}

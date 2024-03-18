@@ -1,4 +1,4 @@
-import { Logo } from "../landingpage/components/Navbar";
+import { Logo } from "../../landingpage/components/Navbar";
 import { IoPersonCircleOutline } from "react-icons/io5";
 
 const Tailor = () => {

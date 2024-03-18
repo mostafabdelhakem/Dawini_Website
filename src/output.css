@@ -1338,20 +1338,17 @@ section {
 }
 
 .provider-page {
+  /* @apply xl:absolute xl:left-[50%] xl:translate-x-[-50%] w-full xl:max-w-[1440px] xl:mx-2 xl:my-8 xl:rounded-2xl xl:overflow-hidden xl:shadow-lg; */
   width: 100%;
 }
 
 @media (min-width: 1280px) {
   .provider-page {
-    position: absolute;
-    left: 50%;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 0px;
     margin-bottom: 2rem;
     max-width: 1440px;
-    --tw-translate-x: -50%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     overflow: hidden;
     border-radius: 1rem;
     --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);

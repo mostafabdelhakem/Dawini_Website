@@ -7,7 +7,7 @@ const Tailor = () => {
 
 const AltNavbar = () => {
   return (
-    <nav className="top-0 left-0 w-full h-20 p-4 text-xl z-20 flex items-center bg-[var(--white-color)]">
+    <nav className="top-0 left-0 w-full h-20 p-4 text-xl z-20 flex items-center bg-[var(--white-color)] border">
       <div className="nav-wrapper max-w-[1240px] w-full mx-auto flex justify-between items-center ">
         <Logo />
         <Tailor />

@@ -50,17 +50,17 @@ const PatientHeroAllCategories = () => {
       <PatientHeroCategoryNavigator
         categoryName={"Doctor"}
         imgSrc={Doctor}
-        dest={"drpage"}
+        dest={"finddoctor"}
       />
       <PatientHeroCategoryNavigator
         categoryName={"Nurse"}
         imgSrc={Nurse}
-        dest={"nursepage"}
+        dest={"findnurse"}
       />
       <PatientHeroCategoryNavigator
         categoryName={"Pharmacy"}
         imgSrc={Pharmacy}
-        dest={"pharmacypage"}
+        dest={"findpharmacy"}
       />
     </div>
   );

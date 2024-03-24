@@ -1,8 +1,8 @@
-const ProviderPageHeader = ({ imgSrc, providerTitle }) => {
+const FinderPageHeader = ({ imgSrc, providerTitle }) => {
   return (
     <div>
-      <div className="h-screen w-full">
-        <div className="h-[25%] md:h-[30%] lg:h-[40%] relative">
+      <div className="w-full">
+        <div className="h-[25vh] md:h-[30vh] lg:h-[40vh] relative">
           <div className="h-full w-full">
             <img
               src={imgSrc}
@@ -22,4 +22,4 @@ const ProviderPageHeader = ({ imgSrc, providerTitle }) => {
   );
 };
 
-export default ProviderPageHeader;
+export default FinderPageHeader;

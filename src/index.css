@@ -54,6 +54,5 @@ section {
 }
 
 .provider-page {
-  /* @apply xl:absolute xl:left-[50%] xl:translate-x-[-50%] w-full xl:max-w-[1440px] xl:mx-2 xl:my-8 xl:rounded-2xl xl:overflow-hidden xl:shadow-lg; */
-  @apply w-full xl:max-w-[1440px] xl:mx-2 xl:mt-0 xl:mb-8 xl:rounded-2xl xl:overflow-hidden xl:shadow-lg;
+  @apply w-full xl:max-w-[1440px] xl:mx-2 xl:my-0 xl:my-8 xl:rounded-2xl xl:overflow-hidden xl:shadow-lg;
 }

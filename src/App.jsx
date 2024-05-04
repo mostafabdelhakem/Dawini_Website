@@ -22,6 +22,18 @@ import PatientHome from "./pages/patienthome/PatientHome";
 // Dashboards
 import DoctorDashboard from "./pages/doctordash/DoctorDashboard";
 
+// Find pages
+import FindDoctor from "./pages/finderspages/finddrpage/FindDoctor";
+import FindNurse from "./pages/finderspages/findnursepage/FindNurse";
+import FindPharmacy from "./pages/finderspages/findpharmacypage/FindPharmacy";
+
+// Profile pages
+import DoctorProfile from "./pages/providersprofiles/doctorprofile/DoctorProfile";
+import NurseProfile from "./pages/providersprofiles/nurseprofile/NurseProfile";
+
+// Booking page
+import BookingPage from "./pages/bookingpage/BookingPage.jsx";
+
 // Not Found Page
 import NotFound from "./pages/authentication/components/NotFound";
 
@@ -30,16 +42,50 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          {/* Landing page */}
           <Route exact path="/" element={<Landing />} />
           <Route path="/team" element={<OurTeam />} />
           <Route path="/login" element={<Login />} />
+
+          {/* Switchers */}
           <Route path="/switcher" element={<Switcher />} />
           <Route path="/medicalswitcher" element={<MedicalSwitcher />} />
+
+          {/* Registration */}
           <Route path="/patient/register" element={<Register />} />
           <Route path="/doctor/register" element={<DoctorRegister />} />
           <Route path="/nurse/register" element={<NurseRegister />} />
+
+          {/* Patient Home page */}
           <Route path="/patienthome" element={<PatientHome />} />
+          <Route path="/patienthome/finddoctor" element={<FindDoctor />} />
+          <Route path="/patienthome/findnurse" element={<FindNurse />} />
+          <Route path="/patienthome/findpharmacy" element={<FindPharmacy />} />
+
+          {/* Profiles */}
+          <Route
+            path="/patienthome/finddoctor/doctorprofile"
+            element={<DoctorProfile />}
+          />
+          <Route
+            path="/patienthome/findnurse/nurseprofile"
+            element={<NurseProfile />}
+          />
+
+          {/* Booking */}
+          <Route
+            path="/patienthome/finddoctor/doctorprofile/bookingpage"
+            element={<BookingPage />}
+          />
+          <Route
+            path="/patienthome/findnurse/nurseprofile/bookingpage"
+            element={<BookingPage />}
+          />
+
+          {/* Dashboards */}
           <Route path="/doctordash" element={<DoctorDashboard />} />
+
+          {/* Not found */}
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>

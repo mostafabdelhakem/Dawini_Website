@@ -1,6 +1,6 @@
-import Doctor from "../authentication/assets/doctor.jpg";
-import Nurse from "../authentication/assets/nurse.jpg";
-import Pharmacy from "./assets/pharmacy.jpg";
+import Doctor from "../../authentication/assets/doctor.jpg";
+import Nurse from "../../authentication/assets/nurse.jpg";
+import Pharmacy from "../assets/pharmacy.jpg";
 import { FaChevronRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -20,11 +20,11 @@ const PatientHeroContent = () => {
   );
 };
 
-const PatientHeroCategoryNavigator = ({ categoryName, imgSrc }) => {
+const PatientHeroCategoryNavigator = ({ categoryName, imgSrc, dest }) => {
   const navigate = useNavigate();
 
   function handleClicks() {
-    navigate("/notfound");
+    navigate(`/patienthome/${dest}`);
   }
 
   return (
@@ -47,11 +47,20 @@ const PatientHeroCategoryNavigator = ({ categoryName, imgSrc }) => {
 const PatientHeroAllCategories = () => {
   return (
     <div className="w-full h-full lg:col-span-2 rounded-lg p-1 flex flex-col sm:flex-row lg:flex-col justify-center items-center gap-2">
-      <PatientHeroCategoryNavigator categoryName={"Doctor"} imgSrc={Doctor} />
-      <PatientHeroCategoryNavigator categoryName={"Nurse"} imgSrc={Nurse} />
+      <PatientHeroCategoryNavigator
+        categoryName={"Doctor"}
+        imgSrc={Doctor}
+        dest={"finddoctor"}
+      />
+      <PatientHeroCategoryNavigator
+        categoryName={"Nurse"}
+        imgSrc={Nurse}
+        dest={"findnurse"}
+      />
       <PatientHeroCategoryNavigator
         categoryName={"Pharmacy"}
         imgSrc={Pharmacy}
+        dest={"findpharmacy"}
       />
     </div>
   );

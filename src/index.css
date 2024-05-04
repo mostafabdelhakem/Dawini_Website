@@ -46,9 +46,13 @@ section {
 }
 
 .section-title {
-  @apply text-4xl font-bold text-center;
+  @apply text-4xl font-bold text-center mb-10;
 }
 
 .main-div {
   @apply w-3/4 max-w-xl md:max-w-2xl m-auto rounded-lg border py-10 px-8;
+}
+
+.provider-page {
+  @apply w-full xl:max-w-[1440px] xl:mx-2 xl:my-0 xl:my-8 xl:rounded-2xl xl:overflow-hidden xl:shadow-lg;
 }

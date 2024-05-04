@@ -32,7 +32,7 @@ const Links = () => {
           {items.map((link) => (
             <li key={link}>
               <a
-                href="#"
+                href="/"
                 color="gray"
                 className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
               >

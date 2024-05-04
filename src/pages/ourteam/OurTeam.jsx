@@ -48,9 +48,9 @@ const AllTeam = () => {
       imgUrl: Mostafa,
       name: "Mostafa Abdelhakam",
       title: "Frontend Developer",
-      linkedin: "https://www.linkedin.com/in/mostafa-abdelhakem-64a5551bb/",
-      github: "https://github.com/Mostafa-Ahmed-Abdelhakem",
-      brief: "Computer Engineering Student with some Volunteering experience and different challenges | Curious Learner",
+      linkedin: "https://www.linkedin.com/in/mostafabdelhakem",
+      github: "https://github.com/mostafabdelhakem",
+      brief: "Computer Engineering Student | Curious Learner",
     },
     {
       imgUrl: Salah,

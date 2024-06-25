@@ -19,9 +19,6 @@ import NurseRegister from "./pages/authentication/components/NurseRegister";
 // Home pages
 import PatientHome from "./pages/patienthome/PatientHome";
 
-// Dashboards
-import DoctorDashboard from "./pages/doctordash/DoctorDashboard";
-
 // Find pages
 import FindDoctor from "./pages/finderspages/finddrpage/FindDoctor";
 import FindNurse from "./pages/finderspages/findnursepage/FindNurse";
@@ -36,6 +33,7 @@ import BookingPage from "./pages/bookingpage/BookingPage.jsx";
 
 // Not Found Page
 import NotFound from "./pages/authentication/components/NotFound";
+import PatientProfile from "./pages/patientprofile/PatientProfile";
 
 function App() {
   return (
@@ -61,6 +59,10 @@ function App() {
           <Route path="/patienthome/finddoctor" element={<FindDoctor />} />
           <Route path="/patienthome/findnurse" element={<FindNurse />} />
           <Route path="/patienthome/findpharmacy" element={<FindPharmacy />} />
+          <Route
+            path="/patienthome/patientprofile"
+            element={<PatientProfile />}
+          />
 
           {/* Profiles */}
           <Route
@@ -81,9 +83,6 @@ function App() {
             path="/patienthome/findnurse/nurseprofile/bookingpage"
             element={<BookingPage />}
           />
-
-          {/* Dashboards */}
-          <Route path="/doctordash" element={<DoctorDashboard />} />
 
           {/* Not found */}
           <Route path="/*" element={<NotFound />} />

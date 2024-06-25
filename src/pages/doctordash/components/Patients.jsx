@@ -25,7 +25,11 @@ const Patients = () => {
   ];
 
   const Title = () => {
-    return <div className="font-bold text-xl p-3 gradient-text text-center">Patients List</div>;
+    return (
+      <div className="font-bold text-xl p-3 gradient-text text-center">
+        Patients List
+      </div>
+    );
   };
 
   const [selectedPatient, setSelectedPatient] = useState(null);

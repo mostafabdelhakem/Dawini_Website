@@ -50,9 +50,9 @@ section {
 }
 
 .main-div {
-  @apply w-3/4 max-w-xl md:max-w-2xl m-auto rounded-lg border py-10 px-8;
+  @apply w-3/4 max-w-xl md:max-w-3xl rounded-lg border py-10 px-8 mb-5;
 }
 
 .provider-page {
-  @apply w-full xl:max-w-[1440px] xl:mx-2 xl:my-0 xl:my-8 xl:rounded-2xl xl:overflow-hidden xl:shadow-lg;
+  @apply w-full xl:max-w-[1440px] xl:mx-2 xl:my-8 xl:rounded-2xl xl:overflow-hidden xl:shadow-lg;
 }

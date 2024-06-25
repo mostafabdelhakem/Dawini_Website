@@ -21,6 +21,7 @@ import PatientHome from "./pages/patienthome/PatientHome";
 
 // Dashboards
 import DoctorDashboard from "./pages/doctordash/DoctorDashboard";
+import NurseDashboard from "./pages/nursedash/NurseDashboard.jsx";
 
 // Find pages
 import FindDoctor from "./pages/finderspages/finddrpage/FindDoctor";
@@ -84,6 +85,7 @@ function App() {
 
           {/* Dashboards */}
           <Route path="/doctordash" element={<DoctorDashboard />} />
+          <Route path="/nursedash" element={<NurseDashboard />} />
 
           {/* Not found */}
           <Route path="/*" element={<NotFound />} />

@@ -14,7 +14,7 @@ export const Logo = () => {
 };
 
 const Title = () => {
-  return <div className="font-bold text-xl p-3 ">Doctor Dashboard</div>;
+  return <div className="font-bold text-xl p-3 ">Nurse Dashboard</div>;
 };
 
 const Copyrights = () => {

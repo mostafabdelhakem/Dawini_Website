@@ -19,6 +19,13 @@ import NurseRegister from "./pages/authentication/components/NurseRegister";
 // Home pages
 import PatientHome from "./pages/patienthome/PatientHome";
 
+<<<<<<< HEAD
+=======
+// Dashboards
+import DoctorDashboard from "./pages/doctordash/DoctorDashboard";
+import NurseDashboard from "./pages/nursedash/NurseDashboard.jsx";
+
+>>>>>>> 18d54330d14275420d3a37503458223d974ea361
 // Find pages
 import FindDoctor from "./pages/finderspages/finddrpage/FindDoctor";
 import FindNurse from "./pages/finderspages/findnursepage/FindNurse";
@@ -84,6 +91,13 @@ function App() {
             element={<BookingPage />}
           />
 
+<<<<<<< HEAD
+=======
+          {/* Dashboards */}
+          <Route path="/doctordash" element={<DoctorDashboard />} />
+          <Route path="/nursedash" element={<NurseDashboard />} />
+
+>>>>>>> 18d54330d14275420d3a37503458223d974ea361
           {/* Not found */}
           <Route path="/*" element={<NotFound />} />
         </Routes>

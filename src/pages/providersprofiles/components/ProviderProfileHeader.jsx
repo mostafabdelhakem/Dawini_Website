@@ -12,9 +12,9 @@ const ProviderProfileHeader = ({ provider, type }) => {
           />
           <div className="flex-grow text-center md:text-left">
             <h3 className="text-4xl font-semibold">
-              {type == "doctor" && "Dr."} {provider.name}
+              {type === "doctor" && "Dr."} {provider.name}
             </h3>
-            {type == "doctor" && (
+            {type === "doctor" && (
               <p className="text-gray-600 text-xl mt-1">
                 {provider.specialization}
               </p>

@@ -14,6 +14,7 @@ const DoctorRegister = () => {
   const [password, setPassword] = useState();
   const [city, setCity] = useState();
   const [birthDate, setBirthDate] = useState();
+  const [image, setImage] = useState();
   const [description, setDescription] = useState();
   const [specialization, setSpecialization] = useState();
   const [fees, setFees] = useState();
@@ -31,7 +32,10 @@ const DoctorRegister = () => {
         console.error("Invalid file type. Please select a valid image file.");
         return;
       }
-      if (side === "front") {
+      if (side === "image") {
+        setImage(file);
+        setErrors({ ...errors, front: false }); // Clear error if valid file selected
+      } else if (side === "front") {
         setFrontImage(file);
         setErrors({ ...errors, front: false }); // Clear error if valid file selected
       } else if (side === "back") {
@@ -61,7 +65,7 @@ const DoctorRegister = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    setErrors({ front: !frontImage, back: !backImage }); // Set errors for empty fields
+    setErrors({ front: !frontImage, back: !backImage, image: !image }); // Set errors for empty fields
 
     // Efficiently capture input field values in an array:
     const inputValues = [
@@ -74,6 +78,7 @@ const DoctorRegister = () => {
       password,
       city,
       birthDate,
+      image,
       description,
       specialization,
       fees,
@@ -84,7 +89,7 @@ const DoctorRegister = () => {
       console.error("Please fill in all required fields."); // Or display an error message to the user
       return; // Prevent navigation
     }
-    if (!frontImage || !backImage) {
+    if (!frontImage || !backImage || !image) {
       return; // Don't navigate if errors exist
     }
     // Perform API call (including error handling):
@@ -202,6 +207,20 @@ const DoctorRegister = () => {
             value={birthDate}
             onChange={(e) => setBirthDate(e.target.value)}
           />
+          
+          {/* image */}
+          <div className="flex items-center space-x-4 mb-4">
+            <label htmlFor="photo">Image</label>
+            <input
+              type="file"
+              id="image"
+              required
+              className="block w-full p-2 rounded-md border border-gray-300 "
+              accept="image/png, image/jpeg, image/gif"
+              onChange={(event) => handleFileChange(event, "image")}
+            />
+          </div>
+          
           {/* additional data */}
           <hr />
           <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">

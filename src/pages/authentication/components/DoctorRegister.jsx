@@ -7,7 +7,6 @@ const DoctorRegister = () => {
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
-  const [age, setAge] = useState();
   const [gender, setGender] = useState();
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
@@ -71,7 +70,6 @@ const DoctorRegister = () => {
     const inputValues = [
       firstName,
       lastName,
-      age,
       gender,
       phone,
       email,
@@ -133,16 +131,6 @@ const DoctorRegister = () => {
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>
-
-          {/* age */}
-          <input
-            type="number"
-            required
-            className={`w-full p-2 border rounded-lg text-sm mb-5`}
-            placeholder="Your Age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
 
           {/* gender */}
           <select
@@ -226,6 +214,8 @@ const DoctorRegister = () => {
           <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
             Complete your data
           </h1>
+
+          {/* description */}
           <textarea
             required
             className={`w-full p-2 border rounded-lg text-sm mb-5`}
@@ -233,6 +223,8 @@ const DoctorRegister = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+
+          {/* specialization */}
           <select
             required
             className={`w-full p-2 border rounded-lg text-sm mb-5`}
@@ -246,6 +238,8 @@ const DoctorRegister = () => {
             <option value="Gastroenterology">Gastroenterology</option>
             {/* Add more options as needed */}
           </select>
+
+          {/* fees */}
           <input
             type="number"
             required

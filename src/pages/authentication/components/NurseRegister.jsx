@@ -2,12 +2,34 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const skillsList = [
+  "Patient Assessment",
+  "Vital Signs Monitoring",
+  "Medication Administration",
+  "Wound Care",
+  "IV Therapy",
+  "Patient Education",
+  "Pain Management",
+  "Infection Control",
+  "Emergency Care",
+  "Blood Draws (Phlebotomy)",
+  "Pediatric Care",
+  "Geriatric Care",
+  "Critical Care",
+  "Telemetry",
+  "Case Management",
+  "Mental Health Support",
+  "Documentation and Record Keeping",
+  "Patient Advocacy",
+  "Basic Life Support (BLS)",
+  "Advanced Cardiovascular Life Support (ACLS)",
+];
+
 const NurseRegister = () => {
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
-  const [age, setAge] = useState();
   const [gender, setGender] = useState();
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
@@ -15,7 +37,9 @@ const NurseRegister = () => {
   const [city, setCity] = useState();
   const [birthDate, setBirthDate] = useState();
   const [image, setImage] = useState();
-  const [skills, setSkills] = useState(null);
+  const [selectedSkills, setSelectedSkills] = useState([]);
+  const [description, setDescription] = useState();
+
   const [frontImage, setFrontImage] = useState(null);
   const [backImage, setBackImage] = useState(null);
 
@@ -63,13 +87,12 @@ const NurseRegister = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    setErrors({ front: !frontImage, back: !backImage, image:!image }); // Set errors for empty fields
+    setErrors({ front: !frontImage, back: !backImage, image: !image }); // Set errors for empty fields
 
     // Efficiently capture input field values in an array:
     const inputValues = [
       firstName,
       lastName,
-      age,
       gender,
       phone,
       email,
@@ -77,7 +100,8 @@ const NurseRegister = () => {
       city,
       birthDate,
       image,
-      skills,
+      selectedSkills,
+      description,
     ];
     // Concisely check if any field is empty:
     if (inputValues.some((value) => !value)) {
@@ -102,6 +126,16 @@ const NurseRegister = () => {
         navigate("/login");
       });
     }, 2000);
+  };
+
+  const handleCheckboxChange = (skill) => {
+    setSelectedSkills((prevSelectedSkills) => {
+      if (prevSelectedSkills.includes(skill)) {
+        return prevSelectedSkills.filter((s) => s !== skill);
+      } else {
+        return [...prevSelectedSkills, skill];
+      }
+    });
   };
 
   return (
@@ -131,16 +165,6 @@ const NurseRegister = () => {
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>
-
-          {/* age */}
-          <input
-            type="number"
-            required
-            className={`w-full p-2 border rounded-lg text-sm mb-5`}
-            placeholder="Your Age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
 
           {/* gender */}
           <select
@@ -219,18 +243,36 @@ const NurseRegister = () => {
             />
           </div>
 
-          {/* skills */}
+          {/* additional data */}
           <hr />
           <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
-            List your skills
+            Choose your skills
           </h1>
-          <input
-            type="list"
+
+          {/* skills */}
+          <div className="mb-4">
+            {skillsList.map((skill) => (
+              <label key={skill} className="block mb-2">
+                <input
+                  type="checkbox"
+                  className="form-checkbox h-4 w-4 text-primary"
+                  checked={selectedSkills.includes(skill)}
+                  onChange={() => handleCheckboxChange(skill)}
+                />
+                <span className="ml-2 text-sm font-semibold text-gray-700 bg-gray-100 p-2 rounded-md">
+                  {skill}
+                </span>
+              </label>
+            ))}
+          </div>
+
+          {/* description */}
+          <textarea
             required
-            className={`w-full p-2 border rounded-md text-sm mb-4 focus:ring-2 focus:ring-primary focus:ring-opacity-50`}
-            placeholder="Skills"
-            value={skills}
-            onChange={(e) => setSkills(e.target.value)}
+            className={`w-full p-2 border rounded-lg text-sm mb-5`}
+            placeholder="Tell us about yourself"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
 
           {/* ID */}

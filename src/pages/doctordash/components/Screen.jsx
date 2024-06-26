@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Patients from "./Patients";
+import Agenda from "./Agenda";
 import Profile from "./Profile";
 import Testimonials from "./TestimonialsPage";
+import Appointments from "./Appointments";
 
 export const Logo = () => {
   return (
@@ -39,16 +40,16 @@ const Sidebar = () => {
           <Title />
           <ul className="tabs px-5 py-4 flex-col z-50 ">
             <li className="p-3 mb-2">
-              <a
-                href="#patients"
-                onClick={() => handleScreenChange("patients")}
-              >
-                Patients
+              <a href="#profile" onClick={() => handleScreenChange("profile")}>
+                Profile
               </a>
             </li>
             <li className="p-3 mb-2">
-              <a href="#profile" onClick={() => handleScreenChange("profile")}>
-                Profile
+              <a
+                href="#agenda"
+                onClick={() => handleScreenChange("agenda")}
+              >
+                Agenda
               </a>
             </li>
             <li className="p-3 mb-2">
@@ -57,6 +58,14 @@ const Sidebar = () => {
                 onClick={() => handleScreenChange("testimonials")}
               >
                 Testimonials
+              </a>
+            </li>
+            <li className="p-3 mb-2">
+              <a
+                href="#appointments"
+                onClick={() => handleScreenChange("appointments")}
+              >
+                Appointments
               </a>
             </li>
           </ul>
@@ -73,12 +82,14 @@ const Sidebar = () => {
 const Content = ({ content }) => {
   // Render different content based on the value of the screen state
   switch (content) {
-    case "patients":
-      return <Patients />;
     case "profile":
       return <Profile />;
+      case "agenda":
+        return <Agenda />;
     case "testimonials":
       return <Testimonials />;
+    case "appointments":
+      return <Appointments />;
     default:
       return null; // If no screen is selected, render nothing
   }

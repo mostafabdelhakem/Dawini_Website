@@ -7,7 +7,6 @@ const Register = () => {
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
-  const [age, setAge] = useState();
   const [gender, setGender] = useState();
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
@@ -68,7 +67,6 @@ const Register = () => {
     const inputValues = [
       firstName,
       lastName,
-      age,
       gender,
       phone,
       email,
@@ -126,16 +124,6 @@ const Register = () => {
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>
-
-          {/* age */}
-          <input
-            type="number"
-            required
-            className={`w-full p-2 border rounded-lg text-sm mb-5`}
-            placeholder="Your Age"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
 
           {/* gender */}
           <select

@@ -12,9 +12,9 @@ const ProviderInfo = ({ provider, type }) => {
         />
         <div className="flex-grow text-center md:text-left">
           <h3 className="text-xl font-semibold">
-            {type == "doctor" && "Dr."} {provider.name}
+            {type === "doctor" && "Dr."} {provider.name}
           </h3>
-          {type == "doctor" && (
+          {type === "doctor" && (
             <p className="text-gray-600">{provider.specialization}</p>
           )}
           <p className="text-gray-500">{provider.location}</p>

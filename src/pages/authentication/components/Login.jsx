@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -49,9 +48,8 @@ const Login = () => {
     // main border
     <div className="h-screen flex bg-[var(--white-color)]">
       {/* inner content */}
-      <div className="main-div">
+      <div className="main-div mx-auto mt-5">
         <h1 className="gradient-text section-title">Login to your account</h1>
-
         {/* login form */}
         <form onSubmit={handleSubmit}>
           <div>
@@ -79,15 +77,6 @@ const Login = () => {
           {/* button */}
           <button className="btn w-full">Login</button>
         </form>
-
-        {/* continue with google */}
-        <Link
-          className="flex w-full items-center justify-center rounded bg-primary py-2 px-6 mt-4 border"
-          to="/login"
-        >
-          <FaGoogle className="mr-2" size={15} />
-          Continue with Google
-        </Link>
 
         {/* don't have an account */}
         <Link className="m-2 flex justify-center pt-3 underline" to="/switcher">

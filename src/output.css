@@ -662,6 +662,10 @@ video {
   margin-left: 0.25rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -738,6 +742,10 @@ video {
   height: 6rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .h-5 {
   height: 1.25rem;
 }
@@ -778,10 +786,6 @@ video {
   height: 100vh;
 }
 
-.h-\[10px\] {
-  height: 10px;
-}
-
 .max-h-\[120px\] {
   max-height: 120px;
 }
@@ -804,6 +808,10 @@ video {
 
 .w-24 {
   width: 6rem;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .w-5 {
@@ -862,14 +870,6 @@ video {
   max-width: 800px;
 }
 
-.max-w-full {
-  max-width: 100%;
-}
-
-.max-w-lg {
-  max-width: 32rem;
-}
-
 .max-w-md {
   max-width: 28rem;
 }
@@ -902,6 +902,10 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.list-disc {
+  list-style-type: disc;
 }
 
 .grid-cols-1 {
@@ -1037,13 +1041,13 @@ video {
   background-color: var(--white-color);
 }
 
-.bg-gray-100\/90 {
-  background-color: rgb(243 244 246 / 0.9);
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+.bg-gray-100\/90 {
+  background-color: rgb(243 244 246 / 0.9);
 }
 
 .bg-gray-950\/20 {
@@ -1053,22 +1057,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-cover {
-  background-size: cover;
-}
-
-.bg-contain {
-  background-size: contain;
-}
-
-.bg-center {
-  background-position: center;
-}
-
-.bg-bottom {
-  background-position: bottom;
 }
 
 .object-cover {
@@ -1164,6 +1152,10 @@ video {
 
 .pb-1 {
   padding-bottom: 0.25rem;
+}
+
+.pl-5 {
+  padding-left: 1.25rem;
 }
 
 .pt-3 {
@@ -1471,7 +1463,8 @@ section {
 
 .main-div {
   margin-bottom: 1.25rem;
-  width: 75%;
+  margin-top: 1.25rem;
+  width: 100%;
   max-width: 36rem;
   border-radius: 0.5rem;
   border-width: 1px;
@@ -1485,6 +1478,10 @@ section {
   .main-div {
     max-width: 48rem;
   }
+}
+
+.main-div {
+  /* w-3/4 mx-auto rounded-lg border py-10 px-8 mb-5 mt-5 */
 }
 
 .provider-page {
@@ -1504,11 +1501,6 @@ section {
     --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
-}
-
-.hover\:bg-gray-300:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
 .hover\:text-\[var\(--blue-color\)\]:hover {

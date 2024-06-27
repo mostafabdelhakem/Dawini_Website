@@ -4,6 +4,29 @@ import { useNavigate } from "react-router-dom";
 import NurseImage from "../../authentication/assets/nurse.jpg";
 import ProviderProfileHeader from "../../providersprofiles/components/ProviderProfileHeader.jsx";
 
+const skillsList = [
+  "Patient Assessment",
+  "Vital Signs Monitoring",
+  "Medication Administration",
+  "Wound Care",
+  "IV Therapy",
+  "Patient Education",
+  "Pain Management",
+  "Infection Control",
+  "Emergency Care",
+  "Blood Draws (Phlebotomy)",
+  "Pediatric Care",
+  "Geriatric Care",
+  "Critical Care",
+  "Telemetry",
+  "Case Management",
+  "Mental Health Support",
+  "Documentation and Record Keeping",
+  "Patient Advocacy",
+  "Basic Life Support (BLS)",
+  "Advanced Cardiovascular Life Support (ACLS)",
+];
+
 const SkillsSection = ({ skills }) => {
   return (
     <div className="w-full flex flex-col items-center mb-14">
@@ -28,7 +51,7 @@ const Profile = () => {
   const [location, setLocation] = useState();
   const [gender, setGender] = useState();
   const [description, setDescription] = useState();
-  const [skills, setSkills] = useState();
+  const [selectedSkills, setSelectedSkills] = useState([]);
 
   const [errors, setErrors] = useState({ front: false, back: false });
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +70,7 @@ const Profile = () => {
       location,
       gender,
       description,
-      skills,
+      selectedSkills,
     ];
     // Concisely check if any field is empty:
     if (inputValues.some((value) => !value)) {
@@ -82,6 +105,15 @@ const Profile = () => {
     }
   };
 
+  const handleCheckboxChange = (skill) => {
+    setSelectedSkills((prevSelectedSkills) => {
+      if (prevSelectedSkills.includes(skill)) {
+        return prevSelectedSkills.filter((s) => s !== skill);
+      } else {
+        return [...prevSelectedSkills, skill];
+      }
+    });
+  };
   const mynurse = {
     imageUrl: NurseImage,
     name: "Sarah Ahmed",
@@ -107,7 +139,7 @@ const Profile = () => {
         <ProviderProfileHeader provider={mynurse} type={"nurse"} />
         <SkillsSection skills={mynurse.skills} />
 
-        <div className="main-div">
+        <div className="main-div mx-auto mt-5">
           <form onSubmit={handleSubmit}>
             <h1 className="gradient-text section-title">Edit Profile</h1>
 
@@ -180,16 +212,30 @@ const Profile = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            
+
+            {/* additional data */}
+            <hr />
+            <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
+              Choose your skills
+            </h1>
+
             {/* skills */}
-            <input
-              type="list"
-              required
-              className={`w-full p-2 border rounded-md text-sm mb-4 focus:ring-2 focus:ring-primary focus:ring-opacity-50`}
-              placeholder="Skills"
-              value={skills}
-              onChange={(e) => setSkills(e.target.value)}
-            />
+            <div className="mb-4">
+              {skillsList.map((skill) => (
+                <label key={skill} className="block mb-2">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-primary"
+                    checked={selectedSkills.includes(skill)}
+                    onChange={() => handleCheckboxChange(skill)}
+                  />
+                  <span className="ml-2 text-sm font-semibold text-gray-700 bg-gray-100 p-2 rounded-md">
+                    {skill}
+                  </span>
+                </label>
+              ))}
+            </div>
+
             {/* buttons */}
             <div className="flex justify-center items-center mt-6 gap-5">
               <button

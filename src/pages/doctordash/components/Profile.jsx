@@ -80,7 +80,7 @@ const Profile = () => {
     <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
       <div className="provider-page w-full bg-white">
         <ProviderProfileHeader provider={mydr} type={"doctor"} />
-        <div className="main-div">
+        <div className="main-div mx-auto mt-5 ">
           <form onSubmit={handleSubmit}>
             <h1 className="gradient-text section-title">Edit Profile</h1>
 

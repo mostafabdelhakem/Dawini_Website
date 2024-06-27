@@ -18,7 +18,9 @@ const ProviderInfo = ({ provider, role }) => {
             {role === "doctor" && "Dr."}{" "}
             {`${provider.firstName} ${provider.lastName}`}
           </h3>
-          <p className="text-gray-600">{provider.specialization}</p>
+          {role === "doctor" && (
+            <p className="text-gray-600">{provider.specialization}</p>
+          )}
           <p className="text-gray-500">{provider.location}</p>
           <p className="text-gray-500">{provider.gender}</p>
           <p className="text-gray-500">{`${provider.fees} LE`}</p>

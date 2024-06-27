@@ -1,24 +1,27 @@
+import { useEffect, useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 import DrImage from "../authentication/assets/doctor.jpg";
+import NurseImage from "../authentication/assets/nurse.jpg";
 
-const ProviderInfo = ({ provider, type }) => {
+const ProviderInfo = ({ provider, role }) => {
   return (
     <div className="h-[300px] md:h-[200px] p-4 bg-white shadow-lg rounded-lg border flex items-center justify-center">
       <div className="flex flex-col gap-4 md:flex-row md:gap-0 items-center">
         <img
           className="w-24 h-24 rounded-full mr-4 object-cover"
-          src={provider.imageUrl}
-          alt={`Dr. ${provider.name}`}
+          src={provider.gender === "male" ? DrImage : NurseImage}
+          alt={`Provider Image`}
         />
         <div className="flex-grow text-center md:text-left">
           <h3 className="text-xl font-semibold">
-            {type == "doctor" && "Dr."} {provider.name}
+            {role === "doctor" && "Dr."}{" "}
+            {`${provider.firstName} ${provider.lastName}`}
           </h3>
-          {type == "doctor" && (
-            <p className="text-gray-600">{provider.specialization}</p>
-          )}
+          <p className="text-gray-600">{provider.specialization}</p>
           <p className="text-gray-500">{provider.location}</p>
           <p className="text-gray-500">{provider.gender}</p>
+          <p className="text-gray-500">{`${provider.fees} LE`}</p>
           <div className="flex justify-center md:justify-start">
             {[...Array(5)].map((_, i) =>
               i < provider.rating ? (
@@ -60,14 +63,36 @@ const BookingInfo = () => {
 };
 
 const BookingPage = () => {
-  const mydr = {
-    imageUrl: DrImage,
-    name: "Sarah Ahmed",
-    specialization: "Cardiology",
-    location: "Cairo, Egypt",
-    gender: "Female",
-    rating: 4,
-  };
+  const { role, providerid } = useParams();
+  const [provider, setProvider] = useState(null);
+
+  const doctorByIDEndPoint = `http://localhost:8000/doctors/${providerid}`;
+  const nurseByIDEndPoint = `http://localhost:8000/nurses/${providerid}`;
+
+  const providerByIDEndPoint =
+    role == "doctor" ? doctorByIDEndPoint : nurseByIDEndPoint;
+
+  useEffect(() => {
+    const fetchDoctorInfo = async () => {
+      try {
+        const response = await fetch(providerByIDEndPoint);
+        if (!response.ok) {
+          throw new Error("Failed to fetch doctor data");
+        }
+        const data = await response.json();
+        setProvider(data);
+      } catch (error) {
+        console.error("Error fetching doctor data:", error);
+        // Handle error state or retry logic here
+      }
+    };
+
+    fetchDoctorInfo();
+  }, [providerid]);
+
+  if (!provider) {
+    return <div>Loading...</div>; // or show a loading indicator
+  }
 
   return (
     <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
@@ -78,7 +103,7 @@ const BookingPage = () => {
             <h1 className="text-center font-bold text-2xl mb-4">
               Booking With
             </h1>
-            <ProviderInfo provider={mydr} type="doctor" />
+            <ProviderInfo provider={provider} role={role} />
           </div>
           <div className="flex flex-col justify-center items-center">
             <BookingInfo />

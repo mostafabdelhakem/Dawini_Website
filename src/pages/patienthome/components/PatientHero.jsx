@@ -2,7 +2,7 @@ import Doctor from "../../authentication/assets/doctor.jpg";
 import Nurse from "../../authentication/assets/nurse.jpg";
 import Pharmacy from "../assets/pharmacy.jpg";
 import { FaChevronRight } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PatientHeroContent = () => {
   return (
@@ -20,11 +20,11 @@ const PatientHeroContent = () => {
   );
 };
 
-const PatientHeroCategoryNavigator = ({ categoryName, imgSrc, dest }) => {
+const PatientHeroCategoryNavigator = ({ categoryName, imgSrc, role }) => {
+  const { patientid } = useParams();
   const navigate = useNavigate();
-
   function handleClicks() {
-    navigate(`/patienthome/${dest}`);
+    navigate(`/patienthome/${patientid}/findprovider/${role}`);
   }
 
   return (
@@ -50,17 +50,17 @@ const PatientHeroAllCategories = () => {
       <PatientHeroCategoryNavigator
         categoryName={"Doctor"}
         imgSrc={Doctor}
-        dest={"finddoctor"}
+        role={"doctor"}
       />
       <PatientHeroCategoryNavigator
         categoryName={"Nurse"}
         imgSrc={Nurse}
-        dest={"findnurse"}
+        role={"nurse"}
       />
       <PatientHeroCategoryNavigator
         categoryName={"Pharmacy"}
         imgSrc={Pharmacy}
-        dest={"findpharmacy"}
+        role={"pharmacy"}
       />
     </div>
   );

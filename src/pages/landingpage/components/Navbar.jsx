@@ -2,10 +2,10 @@ import { IoMenu, IoClose } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const Logo = () => {
+export const Logo = ({ dest }) => {
   return (
     <div className="logo gradient-text font-bold text-3xl drop-shadow-sm">
-      <Link to="/">Dawini.</Link>
+      <Link to={dest}>Dawini.</Link>
     </div>
   );
 };
@@ -104,7 +104,7 @@ const Navbar = () => {
   return (
     <nav className="absolute top-0 left-0 w-full h-20 p-4 text-xl z-20 flex items-center">
       <div className="nav-wrapper max-w-[1240px] w-full mx-auto flex justify-between items-center ">
-        <Logo />
+        <Logo dest={"/"} />
         <Tabs />
         <Tailor />
         <Menu isMenu={isMenu} handleMenu={handleMenu} />

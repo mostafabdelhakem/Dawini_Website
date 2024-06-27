@@ -23,21 +23,14 @@ import PatientHome from "./pages/patienthome/PatientHome";
 import DoctorDashboard from "./pages/doctordash/DoctorDashboard";
 import NurseDashboard from "./pages/nursedash/NurseDashboard.jsx";
 
-// Find pages
-import FindDoctor from "./pages/finderspages/finddrpage/FindDoctor";
-import FindNurse from "./pages/finderspages/findnursepage/FindNurse";
-import FindPharmacy from "./pages/finderspages/findpharmacypage/FindPharmacy";
-
-// Profile pages
-import DoctorProfile from "./pages/providersprofiles/doctorprofile/DoctorProfile";
-import NurseProfile from "./pages/providersprofiles/nurseprofile/NurseProfile";
-
 // Booking page
 import BookingPage from "./pages/bookingpage/BookingPage.jsx";
 
 // Not Found Page
 import NotFound from "./pages/authentication/components/NotFound";
 import PatientProfile from "./pages/patientprofile/PatientProfile";
+import FindProvider from "./pages/finderspages/FindProvider";
+import ProviderProfile from "./pages/providersprofiles/ProviderProfile";
 
 function App() {
   return (
@@ -59,32 +52,27 @@ function App() {
           <Route path="/nurse/register" element={<NurseRegister />} />
 
           {/* Patient Home page */}
-          <Route path="/patienthome" element={<PatientHome />} />
-          <Route path="/patienthome/finddoctor" element={<FindDoctor />} />
-          <Route path="/patienthome/findnurse" element={<FindNurse />} />
-          <Route path="/patienthome/findpharmacy" element={<FindPharmacy />} />
+          <Route path="/patienthome/:patientid" element={<PatientHome />} />
+
+          {/* Find Provider Pages */}
           <Route
-            path="/patienthome/patientprofile"
-            element={<PatientProfile />}
+            path="/patienthome/:patientid/findprovider/:role"
+            element={<FindProvider />}
           />
 
           {/* Profiles */}
           <Route
-            path="/patienthome/finddoctor/doctorprofile"
-            element={<DoctorProfile />}
+            path="/patienthome/:patientid/findprovider/:role/providerprofile/:providerid"
+            element={<ProviderProfile />}
           />
           <Route
-            path="/patienthome/findnurse/nurseprofile"
-            element={<NurseProfile />}
+            path="/patienthome/:patientid/patientprofile/"
+            element={<PatientProfile />}
           />
 
           {/* Booking */}
           <Route
-            path="/patienthome/finddoctor/doctorprofile/bookingpage"
-            element={<BookingPage />}
-          />
-          <Route
-            path="/patienthome/findnurse/nurseprofile/bookingpage"
+            path="/patienthome/:patientid/findprovider/:role/providerprofile/:providerid/bookingpage"
             element={<BookingPage />}
           />
 

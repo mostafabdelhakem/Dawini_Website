@@ -99,7 +99,7 @@ const Register = () => {
 
   return (
     <div className="flex bg-[var(--white-color)]">
-      <div className="main-div">
+      <div className="main-div mx-auto mt-5 ">
         <h1 className="gradient-text section-title">Create an account</h1>
         <form onSubmit={handleSubmit}>
           <h1 className="gradient-text text-center text-xl font-bold mb-4">

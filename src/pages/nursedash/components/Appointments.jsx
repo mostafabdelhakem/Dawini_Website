@@ -127,7 +127,7 @@ const Appointments = () => {
     <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
       <div className="provider-page bg-white">
         <h1 className="gradient-text section-title mt-10">Appointments</h1>
-        <div className="main-div ">
+        <div className="main-div mx-auto mt-5 ">
           <EditFees />
           <AddAppointments />
         </div>

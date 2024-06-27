@@ -139,7 +139,7 @@ const Profile = () => {
         <ProviderProfileHeader provider={mynurse} type={"nurse"} />
         <SkillsSection skills={mynurse.skills} />
 
-        <div className="main-div">
+        <div className="main-div mx-auto mt-5">
           <form onSubmit={handleSubmit}>
             <h1 className="gradient-text section-title">Edit Profile</h1>
 

@@ -48,9 +48,8 @@ const Login = () => {
     // main border
     <div className="h-screen flex bg-[var(--white-color)]">
       {/* inner content */}
-      <div className="main-div">
+      <div className="main-div mx-auto mt-5">
         <h1 className="gradient-text section-title">Login to your account</h1>
-
         {/* login form */}
         <form onSubmit={handleSubmit}>
           <div>

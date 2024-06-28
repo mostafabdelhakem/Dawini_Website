@@ -7,6 +7,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showError, setShowError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
@@ -14,18 +15,9 @@ const Login = () => {
     const loginData = { email, password }; // Create login data
     console.log(loginData);
 
-    // for development
-    // fetch("", {
-    //   method: "POST",
-    //   body: JSON.stringify(loginData),
-    // });
-    // console.log(loginData);
-    // navigate("/");
-
-    // for production
     try {
       const response = await fetch(
-        "https://4801-156-221-223-24.ngrok-free.app/api/v1/auth/login",
+        "https://dawiny-backend-48lm.vercel.app/api/v1/auth/login",
         {
           method: "POST",
           headers: { "Content-type": "application/json" },
@@ -35,9 +27,10 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Login success", data);
-        navigate(`${data.login}`);
+        navigate(`${data.role}home/:${data.id}`);
       } else {
         console.error("Login failed:", response.statusText);
+        setShowError(true);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -46,9 +39,9 @@ const Login = () => {
 
   return (
     // main border
-    <div className="h-screen flex bg-[var(--white-color)]">
+    <div className="w-screen h-screen flex">
       {/* inner content */}
-      <div className="main-div mx-auto mt-5">
+      <div className="main-div mx-auto w-full mt-5 bg-[var(--white-color)] flex flex-col justify-center">
         <h1 className="gradient-text section-title">Login to your account</h1>
         {/* login form */}
         <form onSubmit={handleSubmit}>
@@ -63,7 +56,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div>
+          <div className="mt-2">
             <label htmlFor="password">Password</label>
             <input
               className={`w-full p-2 border rounded-lg text-sm mb-5`}
@@ -77,9 +70,15 @@ const Login = () => {
           {/* button */}
           <button className="btn w-full">Login</button>
         </form>
+        {showError && (
+          <div className="p-4 mt-4 text-center">
+            <p className="font-bold">Login failed:</p>
+            <p>Invalid email or password. Please try again.</p>
+          </div>
+        )}
 
         {/* don't have an account */}
-        <Link className="m-2 flex justify-center pt-3 underline" to="/switcher">
+        <Link className="mt-10 w-full flex justify-center pt-9 font-bold underline" to="/switcher">
           Don't have an account
         </Link>
       </div>

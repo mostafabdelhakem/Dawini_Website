@@ -22,7 +22,8 @@ const Copyrights = () => {
   const currentYear = new Date().getFullYear();
   return (
     <p className="mt-20 text-center justify-end gradient-text">
-      ©{currentYear} Dawini. All Rights Reserved.
+      ©{currentYear} Dawini.
+      All Rights Reserved.
     </p>
   );
 };

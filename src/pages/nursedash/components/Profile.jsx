@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NurseImage from "../../authentication/assets/nurse.jpg";
 import ProviderProfileHeader from "../../providersprofiles/components/ProviderProfileHeader.jsx";
 
 const skillsList = [
@@ -49,6 +48,7 @@ const Profile = () => {
   const [name, setName] = useState();
   const [specialization, setSpecialization] = useState();
   const [location, setLocation] = useState();
+  const [fees, setFees] = useState();
   const [gender, setGender] = useState();
   const [description, setDescription] = useState();
   const [selectedSkills, setSelectedSkills] = useState([]);
@@ -68,6 +68,7 @@ const Profile = () => {
       name,
       specialization,
       location,
+      fees,
       gender,
       description,
       selectedSkills,
@@ -115,21 +116,21 @@ const Profile = () => {
     });
   };
   const mynurse = {
-    imageUrl: NurseImage,
-    name: "Sarah Ahmed",
+    firstName: "Sarah",
+    lastName: " Ahmed",
     location: "Cairo, Egypt",
-    gender: "Female",
+    gender: "female",
+    fees: 120,
     rating: 4,
     description:
       "Customers are not satisfied with our CRM systems we are providing, citing a lack of innovative updates and integration issues with other platforms, Which led to decreasing the company's revenue and increasing the employee turnover rate.",
     skills: [
-      "Skill 1",
-      "Skill 2",
-      "Skill 3",
-      "Skill 4",
-      "Skill 5",
-      "Skill 6",
-      "Skill 7",
+      "Wound Care",
+      "IV Therapy",
+      "Patient Education",
+      "Pain Management",
+      "Infection Control",
+      "Emergency Care",
     ],
   };
 
@@ -138,7 +139,8 @@ const Profile = () => {
       <div className="provider-page w-full bg-white">
         <ProviderProfileHeader provider={mynurse} type={"nurse"} />
         <SkillsSection skills={mynurse.skills} />
-
+        <hr />
+        
         <div className="main-div mx-auto mt-5">
           <form onSubmit={handleSubmit}>
             <h1 className="gradient-text section-title">Edit Profile</h1>
@@ -191,6 +193,16 @@ const Profile = () => {
               onChange={(e) => setLocation(e.target.value)}
             />
 
+            {/* fees */}
+            <input
+              required
+              type="number"
+              className="w-full p-2 border rounded-lg text-sm mb-5"
+              placeholder="Enter your fees"
+              value={fees}
+              onChange={(e) => setFees(e.target.value)}
+            />
+
             {/* gender */}
             <select
               required
@@ -201,7 +213,6 @@ const Profile = () => {
               <option value="">Select Your Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
-              <option value="other">Other</option>
             </select>
 
             {/* description */}
@@ -229,9 +240,7 @@ const Profile = () => {
                     checked={selectedSkills.includes(skill)}
                     onChange={() => handleCheckboxChange(skill)}
                   />
-                  <span className="ml-2 text-sm font-semibold text-gray-700 bg-gray-100 p-2 rounded-md">
-                    {skill}
-                  </span>
+                  <span className="ml-2 text-sm">{skill}</span>
                 </label>
               ))}
             </div>

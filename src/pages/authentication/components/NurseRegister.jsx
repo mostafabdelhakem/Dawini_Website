@@ -31,14 +31,15 @@ const NurseRegister = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [gender, setGender] = useState();
-  const [phone, setPhone] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [city, setCity] = useState();
-  const [birthDate, setBirthDate] = useState();
+  const [dateOfBirth, setDateOfBirth] = useState();
   const [image, setImage] = useState();
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [description, setDescription] = useState();
+  const [fees, setFees] = useState();
 
   const [frontImage, setFrontImage] = useState(null);
   const [backImage, setBackImage] = useState(null);
@@ -94,14 +95,15 @@ const NurseRegister = () => {
       firstName,
       lastName,
       gender,
-      phone,
+      phoneNumber,
       email,
       password,
       city,
-      birthDate,
+      dateOfBirth,
       image,
       selectedSkills,
       description,
+      fees,
     ];
     // Concisely check if any field is empty:
     if (inputValues.some((value) => !value)) {
@@ -139,8 +141,8 @@ const NurseRegister = () => {
   };
 
   return (
-    <div className="flex bg-[var(--white-color)]">
-      <div className="main-div mx-auto mt-5 ">
+    <div className="flex">
+      <div className="main-div mx-auto mt-5  bg-[var(--white-color)]">
         <h1 className="gradient-text section-title">Create an account</h1>
         <form onSubmit={handleSubmit}>
           <h1 className="gradient-text text-center text-xl font-bold mb-4">
@@ -176,7 +178,6 @@ const NurseRegister = () => {
             <option value="">Select Your Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="other">Other</option>
           </select>
 
           {/* phone */}
@@ -186,8 +187,8 @@ const NurseRegister = () => {
             className={"w-full p-2 border rounded-md text-sm mb-4"}
             placeholder="Phone Number"
             maxLength={15} // Prevent overly long numbers
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
 
           {/* email */}
@@ -226,8 +227,8 @@ const NurseRegister = () => {
             required
             className={`w-full p-2 border rounded-md text-sm mb-4 focus:ring-2 focus:ring-primary focus:ring-opacity-50`}
             placeholder="Birth Date"
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
+            value={dateOfBirth}
+            onChange={(e) => setDateOfBirth(e.target.value)}
           />
 
           {/* image */}
@@ -246,10 +247,13 @@ const NurseRegister = () => {
           {/* additional data */}
           <hr />
           <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
-            Choose your skills
+            Complete your data
           </h1>
 
           {/* skills */}
+          <label htmlFor="test" className="gradient-text text-lg">
+            Skills
+          </label>
           <div className="mb-4">
             {skillsList.map((skill) => (
               <label key={skill} className="block mb-2">
@@ -259,12 +263,22 @@ const NurseRegister = () => {
                   checked={selectedSkills.includes(skill)}
                   onChange={() => handleCheckboxChange(skill)}
                 />
-                <span className="ml-2 text-sm font-semibold text-gray-700 bg-gray-100 p-2 rounded-md">
+                <span className="ml-2 text-sm">
                   {skill}
                 </span>
               </label>
             ))}
           </div>
+
+          {/* fees */}
+          <input
+            required
+            type="number"
+            className="w-full p-2 border rounded-lg text-sm mb-5"
+            placeholder="Enter your fees"
+            value={fees}
+            onChange={(e) => setFees(e.target.value)}
+          />
 
           {/* description */}
           <textarea

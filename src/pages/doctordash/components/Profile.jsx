@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import DrImage from "../../authentication/assets/doctor.jpg";
-import ProviderProfileHeader from "../../providersprofiles/components/ProviderProfileHeader.jsx";
+import ProviderProfileHeader from "../../providersprofiles/components/ProviderProfileHeader";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -11,6 +10,7 @@ const Profile = () => {
   const [name, setName] = useState();
   const [specialization, setSpecialization] = useState();
   const [location, setLocation] = useState();
+  const [fees, setFees] = useState();
   const [gender, setGender] = useState();
   const [description, setDescription] = useState();
 
@@ -29,6 +29,7 @@ const Profile = () => {
       name,
       specialization,
       location,
+      fees,
       gender,
       description,
     ];
@@ -66,11 +67,12 @@ const Profile = () => {
   };
 
   const mydr = {
-    imageUrl: DrImage,
-    name: "Ahmed Mohamed",
+    firstName: "Ahmed",
+    lastName: " Mohamed",
     specialization: "Cardiology",
     location: "Cairo, Egypt",
-    gender: "Male",
+    gender: "male",
+    fees: 120,
     rating: 4,
     description:
       "Customers are not satisfied with our CRM systems we are providing, citing a lack of innovative updates and integration issues with other platforms, Which led to decreasing the company's revenue and increasing the employee turnover rate.",
@@ -79,11 +81,12 @@ const Profile = () => {
   return (
     <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
       <div className="provider-page w-full bg-white">
-        <ProviderProfileHeader provider={mydr} type={"doctor"} />
+        <ProviderProfileHeader provider={mydr} role={"doctor"} />
+        <hr />
+
         <div className="main-div mx-auto mt-5 ">
           <form onSubmit={handleSubmit}>
             <h1 className="gradient-text section-title">Edit Profile</h1>
-
             {/* image */}
             <div className="flex items-center space-x-4 mb-4">
               <label htmlFor="photo">Image</label>
@@ -132,6 +135,16 @@ const Profile = () => {
               onChange={(e) => setLocation(e.target.value)}
             />
 
+            {/* fees */}
+            <input
+              required
+              type="number"
+              className="w-full p-2 border rounded-lg text-sm mb-5"
+              placeholder="Enter your fees"
+              value={fees}
+              onChange={(e) => setFees(e.target.value)}
+            />
+
             {/* gender */}
             <select
               required
@@ -142,7 +155,6 @@ const Profile = () => {
               <option value="">Select Your Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
-              <option value="other">Other</option>
             </select>
 
             {/* description */}

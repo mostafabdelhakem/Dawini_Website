@@ -8,11 +8,11 @@ const Register = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [gender, setGender] = useState();
-  const [phone, setPhone] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [city, setCity] = useState();
-  const [birthDate, setBirthDate] = useState();
+  const [dateOfBirth, setDateOfBirth] = useState();
   const [image, setImage] = useState();
   const [frontImage, setFrontImage] = useState(null);
   const [backImage, setBackImage] = useState(null);
@@ -68,11 +68,11 @@ const Register = () => {
       firstName,
       lastName,
       gender,
-      phone,
+      phoneNumber,
       email,
       password,
       city,
-      birthDate,
+      dateOfBirth,
       image,
     ];
     // Concisely check if any field is empty:
@@ -87,7 +87,7 @@ const Register = () => {
     // Perform API call (including error handling):
     setTimeout(() => {
       setIsLoading(true);
-      fetch("", {
+      fetch("https://dawiny-backend-48lm.vercel.app/api/v1/auth/patient/register", {
         method: "POST",
         body: JSON.stringify(inputValues),
       }).then(() => {
@@ -98,8 +98,8 @@ const Register = () => {
   };
 
   return (
-    <div className="flex bg-[var(--white-color)]">
-      <div className="main-div mx-auto mt-5 ">
+    <div className="">
+      <div className="main-div mx-auto mt-5  bg-[var(--white-color)]">
         <h1 className="gradient-text section-title">Create an account</h1>
         <form onSubmit={handleSubmit}>
           <h1 className="gradient-text text-center text-xl font-bold mb-4">
@@ -135,7 +135,6 @@ const Register = () => {
             <option value="">Select Your Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="other">Other</option>
           </select>
 
           {/* phone */}
@@ -145,8 +144,8 @@ const Register = () => {
             className={"w-full p-2 border rounded-md text-sm mb-4"}
             placeholder="Phone Number"
             maxLength={15} // Prevent overly long numbers
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
 
           {/* email */}
@@ -185,8 +184,8 @@ const Register = () => {
             required
             className={`w-full p-2 border rounded-md text-sm mb-4 focus:ring-2 focus:ring-primary focus:ring-opacity-50`}
             placeholder="Birth Date"
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
+            value={dateOfBirth}
+            onChange={(e) => setDateOfBirth(e.target.value)}
           />
 
           {/* image */}

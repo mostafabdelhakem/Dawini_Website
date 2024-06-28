@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useFetch from "../customhooks/useFetch";
 import Testimonials from "../landingpage/components/Testimonials";
 import ActionBtns from "./components/ActionBtns";
 import ProviderProfileHeader from "./components/ProviderProfileHeader";
@@ -21,7 +21,6 @@ const SkillsSection = ({ skills }) => {
 
 function ProviderProfile() {
   const { role, providerid } = useParams();
-  const [provider, setProvider] = useState(null);
 
   const doctorByIDEndPoint = `http://localhost:8000/doctors/${providerid}`;
   const nurseByIDEndPoint = `http://localhost:8000/nurses/${providerid}`;
@@ -29,36 +28,24 @@ function ProviderProfile() {
   const providerByIDEndPoint =
     role == "doctor" ? doctorByIDEndPoint : nurseByIDEndPoint;
 
-  useEffect(() => {
-    const fetchProviderInfo = async () => {
-      try {
-        const response = await fetch(providerByIDEndPoint);
-        if (!response.ok) {
-          throw new Error("Failed to fetch provider data");
-        }
-        const data = await response.json();
-        setProvider(data);
-      } catch (error) {
-        console.error("Error fetching provider data:", error);
-        // Handle error state or retry logic here
-      }
-    };
-
-    fetchProviderInfo();
-  }, [providerid]);
-
-  if (!provider) {
-    return <div>Loading...</div>; // or show a loading indicator
-  }
+  const { data: provider, isPending, error } = useFetch(providerByIDEndPoint);
 
   return (
-    <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
-      <div className="provider-page w-full bg-white">
-        <ActionBtns />
-        <ProviderProfileHeader provider={provider} role={role} />
-        {role == "nurse" && <SkillsSection skills={provider.skills} />}
-        <Testimonials />
-      </div>
+    <div>
+      {error && <div>{error}</div>}
+      {isPending && <div>Loading...</div>}
+      {provider && (
+        <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
+          <div className="provider-page w-full bg-white">
+            <ActionBtns />
+            <ProviderProfileHeader provider={provider} role={role} />
+            {role == "nurse" && (
+              <SkillsSection skills={provider.skills || []} />
+            )}
+            <Testimonials />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

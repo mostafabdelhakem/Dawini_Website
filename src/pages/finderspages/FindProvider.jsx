@@ -3,8 +3,8 @@ import AltNavbar from "../patienthome/components/AltNavbar";
 import FilterBar from "./components/FilterBar";
 import FinderPageHeader from "./components/FinderPageHeader";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useEffect, useState } from "react";
 import ProviderCard from "./components/ProviderCard";
+import useFetch from "../customhooks/useFetch";
 
 const ShowMoreBtn = () => {
   return (
@@ -19,24 +19,17 @@ const ShowMoreBtn = () => {
 };
 
 const ProvidersList = ({ providersEndPoint, role }) => {
-  const fetchProviders = () => {
-    return fetch(providersEndPoint)
-      .then((response) => response.json())
-      .then((data) => data);
-  };
-
-  const [providers, setProviders] = useState([]);
-
-  useEffect(() => {
-    fetchProviders().then((data) => setProviders(data));
-  }, []);
+  const { data: providers, isPending, error } = useFetch(providersEndPoint);
 
   return (
     <div>
       <div className="p-8 grid gap-4 grid-cols-1 lg:grid-cols-2">
-        {providers.map((provider) => (
-          <ProviderCard provider={provider} role={role} />
-        ))}
+        {error && <div>{error}</div>}
+        {isPending && <div>Loading...</div>}
+        {providers &&
+          providers.map((provider) => (
+            <ProviderCard provider={provider} role={role} />
+          ))}
       </div>
       <ShowMoreBtn />
     </div>

@@ -3,6 +3,7 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import DrImage from "../authentication/assets/doctor.jpg";
 import NurseImage from "../authentication/assets/nurse.jpg";
+import useFetch from "../customhooks/useFetch";
 
 const ProviderInfo = ({ provider, role }) => {
   return (
@@ -66,7 +67,6 @@ const BookingInfo = () => {
 
 const BookingPage = () => {
   const { role, providerid } = useParams();
-  const [provider, setProvider] = useState(null);
 
   const doctorByIDEndPoint = `http://localhost:8000/doctors/${providerid}`;
   const nurseByIDEndPoint = `http://localhost:8000/nurses/${providerid}`;
@@ -74,43 +74,27 @@ const BookingPage = () => {
   const providerByIDEndPoint =
     role == "doctor" ? doctorByIDEndPoint : nurseByIDEndPoint;
 
-  useEffect(() => {
-    const fetchDoctorInfo = async () => {
-      try {
-        const response = await fetch(providerByIDEndPoint);
-        if (!response.ok) {
-          throw new Error("Failed to fetch doctor data");
-        }
-        const data = await response.json();
-        setProvider(data);
-      } catch (error) {
-        console.error("Error fetching doctor data:", error);
-        // Handle error state or retry logic here
-      }
-    };
-
-    fetchDoctorInfo();
-  }, [providerid]);
-
-  if (!provider) {
-    return <div>Loading...</div>; // or show a loading indicator
-  }
+  const { data: provider, isPending, error } = useFetch(providerByIDEndPoint);
 
   return (
     <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
       <div className="provider-page min-h-full w-full bg-white p-10">
         <h1 className="section-title gradient-text">Book Now</h1>
-        <div className="h-[80%] grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="flex flex-col justify-center">
-            <h1 className="text-center font-bold text-2xl mb-4">
-              Booking With
-            </h1>
-            <ProviderInfo provider={provider} role={role} />
+        {error && <div>{error}</div>}
+        {isPending && <div>Loading...</div>}
+        {provider && (
+          <div className="h-[80%] grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="flex flex-col justify-center">
+              <h1 className="text-center font-bold text-2xl mb-4">
+                Booking With
+              </h1>
+              <ProviderInfo provider={provider} role={role} />
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <BookingInfo />
+            </div>
           </div>
-          <div className="flex flex-col justify-center items-center">
-            <BookingInfo />
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

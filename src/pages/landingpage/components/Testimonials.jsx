@@ -112,7 +112,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <div id="testimonials" className="gradient-background">
+    <div id="testim onials" className="gradient-background">
       <section>
         <Title />
         <AllTestimonials testimonials={testimonials} />

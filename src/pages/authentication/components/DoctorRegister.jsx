@@ -8,11 +8,11 @@ const DoctorRegister = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [gender, setGender] = useState();
-  const [phone, setPhone] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [city, setCity] = useState();
-  const [birthDate, setBirthDate] = useState();
+  const [datOfBirth, setDateOfBirth] = useState();
   const [image, setImage] = useState();
   const [description, setDescription] = useState();
   const [specialization, setSpecialization] = useState();
@@ -71,16 +71,17 @@ const DoctorRegister = () => {
       firstName,
       lastName,
       gender,
-      phone,
+      phoneNumber,
       email,
       password,
       city,
-      birthDate,
+      datOfBirth,
       image,
       description,
       specialization,
       fees,
     ];
+    
     // Concisely check if any field is empty:
     if (inputValues.some((value) => !value)) {
       // Handle empty fields:
@@ -90,10 +91,11 @@ const DoctorRegister = () => {
     if (!frontImage || !backImage || !image) {
       return; // Don't navigate if errors exist
     }
+
     // Perform API call (including error handling):
     setTimeout(() => {
       setIsLoading(true);
-      fetch("", {
+      fetch("https://dawiny-backend-48lm.vercel.app/api/v1/auth/patient/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(inputValues),
@@ -105,8 +107,8 @@ const DoctorRegister = () => {
   };
 
   return (
-    <div className="flex bg-[var(--white-color)]">
-      <div className="main-div mx-auto mt-5">
+    <div className="flex">
+      <div className="main-div mx-auto mt-5 bg-[var(--white-color)]">
         <h1 className="gradient-text section-title">Create an account</h1>
         <form onSubmit={handleSubmit}>
           <h1 className="gradient-text text-center text-xl font-bold mb-4">
@@ -142,7 +144,6 @@ const DoctorRegister = () => {
             <option value="">Select Your Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="other">Other</option>
           </select>
 
           {/* phone */}
@@ -152,8 +153,8 @@ const DoctorRegister = () => {
             className={"w-full p-2 border rounded-md text-sm mb-4"}
             placeholder="Phone Number"
             maxLength={15} // Prevent overly long numbers
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
 
           {/* email */}
@@ -192,10 +193,10 @@ const DoctorRegister = () => {
             required
             className={`w-full p-2 border rounded-md text-sm mb-4 focus:ring-2 focus:ring-primary focus:ring-opacity-50`}
             placeholder="Birth Date"
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
+            value={datOfBirth}
+            onChange={(e) => setDateOfBirth(e.target.value)}
           />
-          
+
           {/* image */}
           <div className="flex items-center space-x-4 mb-4">
             <label htmlFor="photo">Image</label>
@@ -208,21 +209,12 @@ const DoctorRegister = () => {
               onChange={(event) => handleFileChange(event, "image")}
             />
           </div>
-          
+
           {/* additional data */}
           <hr />
           <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
             Complete your data
           </h1>
-
-          {/* description */}
-          <textarea
-            required
-            className={`w-full p-2 border rounded-lg text-sm mb-5`}
-            placeholder="Tell us about yourself"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
 
           {/* specialization */}
           <select
@@ -231,22 +223,50 @@ const DoctorRegister = () => {
             value={specialization}
             onChange={(e) => setSpecialization(e.target.value)}
           >
-            <option value="">Select Doctor's Specialization</option>
+            <option value="">Select Your Specialization</option>
+            <option value="Allergy and Immunology">
+              Allergy and Immunology
+            </option>
+            <option value="Anesthesiology">Anesthesiology</option>
             <option value="Cardiology">Cardiology</option>
             <option value="Dermatology">Dermatology</option>
             <option value="Endocrinology">Endocrinology</option>
             <option value="Gastroenterology">Gastroenterology</option>
-            {/* Add more options as needed */}
+            <option value="General Surgery">General Surgery</option>
+            <option value="Geriatrics">Geriatrics</option>
+            <option value="Hematology">Hematology</option>
+            <option value="Infectious Disease">Infectious Disease</option>
+            <option value="Internal Medicine">Internal Medicine</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Oncology">Oncology</option>
+            <option value="Ophthalmology">Ophthalmology</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="Otolaryngology">Otolaryngology (ENT)</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Psychiatry">Psychiatry</option>
+            <option value="Radiology">Radiology</option>
+            <option value="Rheumatology">Rheumatology</option>
+            <option value="Urology">Urology</option>
+            <option value="Vascular Surgery">Vascular Surgery</option>
           </select>
 
           {/* fees */}
           <input
-            type="number"
             required
-            className={`w-full p-2 border rounded-lg text-sm mb-5`}
-            placeholder="Enter Doctor's Fees"
+            type="number"
+            className="w-full p-2 border rounded-lg text-sm mb-5"
+            placeholder="Enter your fees"
             value={fees}
             onChange={(e) => setFees(e.target.value)}
+          />
+
+          {/* description */}
+          <textarea
+            required
+            className={`w-full p-2 border rounded-lg text-sm mb-5`}
+            placeholder="Tell us about yourself"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
 
           {/* ID */}

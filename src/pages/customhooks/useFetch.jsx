@@ -5,6 +5,8 @@ const useFetch = (url) => {
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log(`URL: ${url}`);
+
   useEffect(() => {
     const abortCont = new AbortController();
 
@@ -29,7 +31,7 @@ const useFetch = (url) => {
             setError(err.message);
           }
         });
-    }, 1000);
+    }, 500);
     return () => abortCont.abort();
   }, [url]);
 

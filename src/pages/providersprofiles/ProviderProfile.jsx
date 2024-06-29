@@ -22,8 +22,8 @@ const SkillsSection = ({ skills }) => {
 function ProviderProfile() {
   const { role, providerid } = useParams();
 
-  const doctorByIDEndPoint = `http://localhost:8000/doctors/${providerid}`;
-  const nurseByIDEndPoint = `http://localhost:8000/nurses/${providerid}`;
+  const doctorByIDEndPoint = `https://dawiny-backend-48lm.vercel.app/api/v1/doctors/${providerid}`;
+  const nurseByIDEndPoint = `https://dawiny-backend-48lm.vercel.app/api/v1/nurses/${providerid}`;
 
   const providerByIDEndPoint =
     role == "doctor" ? doctorByIDEndPoint : nurseByIDEndPoint;

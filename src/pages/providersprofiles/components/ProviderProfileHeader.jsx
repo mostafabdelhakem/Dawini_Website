@@ -9,7 +9,11 @@ const ProviderProfileHeader = ({ provider, role }) => {
         <div className="flex flex-col gap-4 md:flex-row md:gap-0 items-center p-4">
           <img
             className="w-[250px] h-[250px] rounded-full md:mr-16 object-cover"
-            src={provider.gender === "male" ? DrImage : NurseImage}
+            src={
+              provider.gender === "male" || provider.gender === "Male"
+                ? DrImage
+                : NurseImage
+            }
             alt={`Provider`}
           />
           <div className="flex-grow text-center md:text-left">

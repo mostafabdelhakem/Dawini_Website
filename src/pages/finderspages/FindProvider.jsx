@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import AltNavbar from "../patienthome/components/AltNavbar";
-import FilterBar from "./components/FilterBar";
+import FilterBar from "./components/filterbar/FilterBar";
 import FinderPageHeader from "./components/FinderPageHeader";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import ProviderCard from "./components/ProviderCard";
 import useFetch from "../customhooks/useFetch";
+import { useState } from "react";
 
 const ShowMoreBtn = () => {
   return (
@@ -38,15 +39,18 @@ const ProvidersList = ({ providersEndPoint, role }) => {
 
 function FindProvider() {
   const { role } = useParams();
+  const doctorsEndPoint =
+    "https://dawiny-backend-48lm.vercel.app/api/v1/doctors/";
+  const nursesEndPoint = "https://dawiny-backend-48lm.vercel.app/api/v1/nurses";
+  const pharmaciesEndPoint =
+    "https://dawiny-backend-48lm.vercel.app/api/v1/pharmacies";
 
-  const doctorsEndPoint = "http://localhost:8000/doctors";
-  const nursesEndPoint = "http://localhost:8000/nurses";
-  const pharmaciesEndPoint = "http://localhost:8000/pharmacies";
-
-  const roleEndPoint =
+  const [endPoint, setEndPoint] = useState(
     (role == "doctor" && doctorsEndPoint) ||
-    (role == "nurse" && nursesEndPoint) ||
-    (role == "pharmacy" && pharmaciesEndPoint);
+      (role == "nurse" && nursesEndPoint) ||
+      (role == "pharmacy" && pharmaciesEndPoint)
+  );
+  console.log(endPoint);
 
   return (
     <div>
@@ -54,8 +58,8 @@ function FindProvider() {
       <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
         <div className="provider-page bg-white">
           <FinderPageHeader role={role} />
-          <FilterBar role={role} />
-          <ProvidersList providersEndPoint={roleEndPoint} role={role} />
+          <FilterBar role={role} setEndPoint={setEndPoint} />
+          <ProvidersList providersEndPoint={endPoint} role={role} />
         </div>
       </div>
     </div>
@@ -63,3 +67,20 @@ function FindProvider() {
 }
 
 export default FindProvider;
+
+{
+  /* <FilterBar role={role} setEndPoint={setEndPoint} /> */
+}
+
+// const endPoint = `http://localhost:8000/doctors`;
+
+// const doctorsEndPoint =
+//   "https://dawiny-backend-48lm.vercel.app/api/v1/doctors/";
+// const nursesEndPoint = "https://dawiny-backend-48lm.vercel.app/api/v1/nurses";
+// const pharmaciesEndPoint =
+//   "https://dawiny-backend-48lm.vercel.app/api/v1/pharmacies";
+
+// endPoint =
+//   (role == "doctor" && doctorsEndPoint) ||
+//   (role == "nurse" && nursesEndPoint) ||
+//   (role == "pharmacy" && pharmaciesEndPoint);

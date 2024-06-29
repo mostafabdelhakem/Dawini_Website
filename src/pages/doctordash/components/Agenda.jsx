@@ -2,6 +2,7 @@
 import PatientImg from "../../../assets/patient image.jpg";
 import { useState } from "react";
 import { FaFilter } from "react-icons/fa";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const FilterBar = ({ onFilterChange }) => {
   const [filters, setFilters] = useState({
@@ -79,7 +80,7 @@ const FilterBar = ({ onFilterChange }) => {
 
 const PatientCard = ({ patient }) => {
   return (
-    <div className="flex flex-col gap-4 md:flex-row md:gap-0  items-center p-4 bg-white shadow-lg rounded-lg border">
+    <div className="flex flex-col gap-4 md:flex-row md:gap-0 items-center p-4 bg-white shadow-lg rounded-lg border">
       <img
         className="w-24 h-24 rounded-full mr-4 object-cover"
         src={patient.image}
@@ -91,8 +92,20 @@ const PatientCard = ({ patient }) => {
         <p className="text-gray-500">{`${patient.gender}`}</p>
         <p className="text-gray-500">{`${patient.phone}`}</p>
       </div>
-      <button className="gradient-background opacity-90 hover:opacity-100 text-white font-bold py-2 px-4 rounded">
+      {/* <button className="gradient-background opacity-90 hover:opacity-100 text-white font-bold py-2 px-4 rounded">
         Call Patient
+      </button> */}
+    </div>
+  );
+};
+
+const ShowMoreBtn = () => {
+  return (
+    <div className="w-full flex justify-center items-center mb-8">
+      <button className="gradient-background text-white py-4 px-8 rounded-full shadow-lg font-bold">
+        <p className="flex items-center gap-2">
+          Show More <MdKeyboardArrowDown />
+        </p>
       </button>
     </div>
   );
@@ -139,12 +152,13 @@ const Agenda = () => {
   return (
     <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
       <div className="provider-page bg-white">
-        <FilterBar />
+        {/* <FilterBar /> */}
         <div className="p-8 grid gap-4 grid-cols-1">
           {patients.map((patient) => (
             <PatientCard patient={patient} />
           ))}
         </div>
+        <ShowMoreBtn />
       </div>
     </div>
   );

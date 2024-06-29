@@ -39,6 +39,7 @@ const ProvidersList = ({ providersEndPoint, role }) => {
 
 function FindProvider() {
   const { role } = useParams();
+
   const doctorsEndPoint =
     "https://dawiny-backend-48lm.vercel.app/api/v1/doctors/";
   const nursesEndPoint = "https://dawiny-backend-48lm.vercel.app/api/v1/nurses";
@@ -67,20 +68,3 @@ function FindProvider() {
 }
 
 export default FindProvider;
-
-{
-  /* <FilterBar role={role} setEndPoint={setEndPoint} /> */
-}
-
-// const endPoint = `http://localhost:8000/doctors`;
-
-// const doctorsEndPoint =
-//   "https://dawiny-backend-48lm.vercel.app/api/v1/doctors/";
-// const nursesEndPoint = "https://dawiny-backend-48lm.vercel.app/api/v1/nurses";
-// const pharmaciesEndPoint =
-//   "https://dawiny-backend-48lm.vercel.app/api/v1/pharmacies";
-
-// endPoint =
-//   (role == "doctor" && doctorsEndPoint) ||
-//   (role == "nurse" && nursesEndPoint) ||
-//   (role == "pharmacy" && pharmaciesEndPoint);

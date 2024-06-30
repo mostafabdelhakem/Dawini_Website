@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import DrImage from "../authentication/assets/doctor.jpg";
 import NurseImage from "../authentication/assets/nurse.jpg";
 import useFetch from "../customhooks/useFetch";
@@ -11,7 +11,11 @@ const ProviderInfo = ({ provider, role }) => {
       <div className="flex flex-col gap-4 md:flex-row md:gap-0 items-center">
         <img
           className="w-24 h-24 rounded-full mr-4 object-cover"
-          src={provider.gender === "male" ? DrImage : NurseImage}
+          src={
+            provider.gender === "male" || provider.gender === "Male"
+              ? DrImage
+              : NurseImage
+          }
           alt={`Provider Image`}
         />
         <div className="flex-grow text-center md:text-left">
@@ -24,7 +28,7 @@ const ProviderInfo = ({ provider, role }) => {
           )}
           <p className="text-gray-500">{provider.location}</p>
           <p className="text-gray-500">{provider.gender}</p>
-          <p className="text-gray-500">{`${provider.fees} LE`}</p>
+          <p className="text-gray-500">{`${provider.appointmentFees} LE`}</p>
           <div className="flex justify-center md:justify-start">
             {[...Array(5)].map((_, i) =>
               i < provider.rating ? (
@@ -40,25 +44,109 @@ const ProviderInfo = ({ provider, role }) => {
   );
 };
 
-const BookingInfo = () => {
+const BookingInfo = ({ provider, role }) => {
+  const availableAppointments = provider.availableAppointments;
+
+  const { patientid, providerid } = useParams();
+
+  let navigate = useNavigate();
+
+  const initialAppointment = {
+    date: "",
+    time: "",
+  };
+
+  const [appointment, setAppointment] = useState(initialAppointment);
+
+  const handleConfirmBtn = async () => {
+    const requestedAppointmentObj = {
+      patientId: patientid,
+      providerId: providerid,
+      date: appointment.date.split("T")[0],
+      time: appointment.time,
+    };
+
+    console.log("requestedAppointmentObj:", requestedAppointmentObj);
+
+    try {
+      const response = await fetch(
+        "https://dawiny-backend-48lm.vercel.app/api/v1/appointments/patient/book-appointment",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // Add any other headers as needed
+          },
+          body: JSON.stringify(requestedAppointmentObj),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to book appointment");
+      }
+
+      const responseData = await response.json();
+      console.log("Response from server:", responseData);
+
+      if (response.status == 201) {
+        const alertMessage = `Your appointment with ${role} ${
+          provider.firstName
+        } ${provider.lastName} at date: ${
+          appointment.date.split("T")[0]
+        } - time ${appointment.time}`;
+
+        // Show alert for 3 seconds
+        alert(alertMessage);
+
+        // Delay navigation after 3 seconds
+        setTimeout(() => {
+          navigate(`/patienthome/${patientid}`);
+        }, 2000); // 3000 milliseconds = 3 seconds
+      }
+      // Handle any further actions after successful booking
+      // For example, updating UI or state
+    } catch (error) {
+      console.error("Error booking appointment:", error.message);
+      // Handle error gracefully, show message to user, etc.
+    }
+  };
+
+  const handleSelectAppointment = (e) => {
+    const { value } = e.target; // Assuming `value` is a string representation of the appointment object
+    console.log(value);
+    setAppointment(JSON.parse(value)); // Parse the value back into an object
+  };
+
   return (
     <div className="flex flex-col justify-center min-w-[300px] max-w-[400px] gap-4">
-      <h1 className="text-center font-bold text-2xl">Select Date</h1>
-      <select name="" id="" className="rounded-md p-2 bg-[var(--white-color)]">
-        <option value="">DD/MM/YYYY</option>
-        <option value="">25/04/2024</option>
-        <option value="">30/04/2024</option>
-        <option value="">06/05/2024</option>
+      <h1 className="text-center font-bold text-2xl">Available Appointments</h1>
+      <select
+        onChange={handleSelectAppointment}
+        value={JSON.stringify(appointment)} // Serialize appointment object to string for value
+        className="rounded-md p-2 bg-[var(--white-color)]"
+      >
+        <option value={JSON.stringify(initialAppointment)}>
+          Choose Appointment
+        </option>
+        {availableAppointments &&
+          availableAppointments.map((appointment, index) => (
+            <option
+              key={index}
+              value={JSON.stringify({
+                date: appointment.date,
+                time: appointment.time,
+              })}
+            >
+              {`Date: ${appointment.date.split("T")[0]} - Time: ${
+                appointment.time
+              }`}
+            </option>
+          ))}
       </select>
-      <div className="p-1"></div>
-      <h1 className="text-center font-bold text-2xl">Select Time</h1>
-      <select name="" id="" className="rounded-md p-2 bg-[var(--white-color)]">
-        <option value="">HH:MM AM/PM</option>
-        <option value="">04:30 PM</option>
-        <option value="">05:30 PM</option>
-        <option value="">06:30 PM</option>
-      </select>
-      <button className="gradient-background text-white font-bold rounded-md mt-6 p-2">
+      <button
+        onClick={handleConfirmBtn}
+        className="gradient-background text-white font-bold rounded-md mt-6 p-2"
+      >
         Confirm Booking
       </button>
     </div>
@@ -91,7 +179,7 @@ const BookingPage = () => {
               <ProviderInfo provider={provider} role={role} />
             </div>
             <div className="flex flex-col justify-center items-center">
-              <BookingInfo />
+              <BookingInfo provider={provider} role={role} />
             </div>
           </div>
         )}

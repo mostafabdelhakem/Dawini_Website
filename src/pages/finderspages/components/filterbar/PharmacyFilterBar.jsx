@@ -3,8 +3,8 @@ import { FaFilter } from "react-icons/fa";
 
 const PharmacyFilterBar = ({ setEndPoint }) => {
   const initialFilters = {
-    location: "",
-    workingHours: "",
+    city: "",
+    fullOrHalf: "",
     rating: "",
   };
 
@@ -31,19 +31,19 @@ const PharmacyFilterBar = ({ setEndPoint }) => {
 
   const WorkingHoursDropdown = () => {
     const handleWorkingHoursDropdown = (e) => {
-      setFilters({ ...filters, workingHours: e.target.value });
+      setFilters({ ...filters, fullOrHalf: e.target.value });
     };
 
     return (
       <select
         onChange={handleWorkingHoursDropdown}
         name="workingHours"
-        value={filters.workingHours}
+        value={filters.fullOrHalf}
         className="p-2 rounded border"
       >
         <option value="">workingHours</option>
-        <option value="fullDay">Full Day</option>
-        <option value="mostDay">Most Day</option>
+        <option value="Full Day">Full Day</option>
+        <option value="Night Shift">Night Shift</option>
       </select>
     );
   };
@@ -72,26 +72,13 @@ const PharmacyFilterBar = ({ setEndPoint }) => {
 
   const FindBtn = () => {
     const onFindBtnClick = () => {
-      const { specialization, location, gender, rating, appointmentFees } =
-        filters;
+      const { city, fullOrHalf, rating } = filters;
 
-      const filterSpecialization = specialization
-        ? `specialization=${specialization}`
-        : "";
-      const filterLocation = location ? `location=${location}` : "";
-      const filterGender = gender ? `gender=${gender}` : "";
+      const filterCity = city ? `city=${city}` : "";
+      const filterFullOrHalf = fullOrHalf ? `fullOrHalf=${fullOrHalf}` : "";
       const filterRating = rating ? `rating[gte]=${rating}` : "";
-      const filterAppointmentFees = appointmentFees
-        ? `appointmentFees[lte]=${appointmentFees}`
-        : "";
 
-      const filterValues = [
-        filterSpecialization,
-        filterLocation,
-        filterGender,
-        filterRating,
-        filterAppointmentFees,
-      ];
+      const filterValues = [filterCity, filterFullOrHalf, filterRating];
 
       const filtersString = filterValues
         .filter((value) => value !== "")

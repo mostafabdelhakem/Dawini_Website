@@ -15,7 +15,9 @@ const PharmacyCard = ({ pharmacy }) => {
       <div className="flex-grow text-center md:text-left">
         <h3 className="text-xl font-semibold">{`${pharmacy.name}`}</h3>
         <p className="text-gray-500">{pharmacy.city}</p>
-        <p className="text-gray-500">{`${pharmacy.workingHours}`}</p>
+        <p className="text-gray-500">{`${
+          pharmacy.fullOrHalf === "Full" ? "Full Day" : "Night Shift"
+        }`}</p>
         <div className="flex justify-center md:justify-start">
           {[...Array(5)].map((_, i) =>
             i < pharmacy.rating ? (

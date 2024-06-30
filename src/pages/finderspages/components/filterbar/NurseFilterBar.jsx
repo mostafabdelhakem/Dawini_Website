@@ -43,8 +43,8 @@ const NurseFilterBar = ({ setEndPoint }) => {
         className="p-2 rounded border"
       >
         <option value="">Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
       </select>
     );
   };
@@ -91,12 +91,8 @@ const NurseFilterBar = ({ setEndPoint }) => {
 
   const FindBtn = () => {
     const onFindBtnClick = () => {
-      const { specialization, location, gender, rating, appointmentFees } =
-        filters;
+      const { location, gender, rating, appointmentFees } = filters;
 
-      const filterSpecialization = specialization
-        ? `specialization=${specialization}`
-        : "";
       const filterLocation = location ? `location=${location}` : "";
       const filterGender = gender ? `gender=${gender}` : "";
       const filterRating = rating ? `rating[gte]=${rating}` : "";
@@ -105,7 +101,6 @@ const NurseFilterBar = ({ setEndPoint }) => {
         : "";
 
       const filterValues = [
-        filterSpecialization,
         filterLocation,
         filterGender,
         filterRating,

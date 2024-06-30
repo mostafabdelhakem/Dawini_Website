@@ -28,7 +28,7 @@ const ProviderProfileHeader = ({ provider, role }) => {
             )}
             <p className="text-gray-500 text-xl mt-1">{provider.location}</p>
             <p className="text-gray-500 text-xl mt-1">{provider.gender}</p>
-            <p className="text-gray-500 text-xl mt-1">{`${provider.fees} LE`}</p>
+            <p className="text-gray-500 text-xl mt-1">{`${provider.appointmentFees} LE`}</p>
             <div className="flex justify-center md:justify-start text-xl mt-1">
               {[...Array(5)].map((_, i) =>
                 i < provider.rating ? (

@@ -93,7 +93,7 @@ const BookingInfo = ({ provider, role }) => {
           provider.firstName
         } ${provider.lastName} at date: ${
           appointment.date.split("T")[0]
-        } - time ${appointment.time}`;
+        } - time ${appointment.time} is reserved.`;
 
         // Show alert for 3 seconds
         alert(alertMessage);

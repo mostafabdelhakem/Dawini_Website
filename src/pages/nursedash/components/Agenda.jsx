@@ -2,6 +2,7 @@
 import PatientImg from "../../../assets/patient image.jpg";
 import { useState } from "react";
 import { FaFilter } from "react-icons/fa";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const FilterBar = ({ onFilterChange }) => {
   const [filters, setFilters] = useState({
@@ -98,6 +99,18 @@ const PatientCard = ({ patient }) => {
   );
 };
 
+const ShowMoreBtn = () => {
+  return (
+    <div className="w-full flex justify-center items-center mb-8">
+      <button className="gradient-background text-white py-4 px-8 rounded-full shadow-lg font-bold">
+        <p className="flex items-center gap-2">
+          Show More <MdKeyboardArrowDown />
+        </p>
+      </button>
+    </div>
+  );
+};
+
 const Agenda = () => {
   const patients = [
     {
@@ -139,12 +152,13 @@ const Agenda = () => {
   return (
     <div className="min-h-screen flex justify-center bg-[var(--white-color)]">
       <div className="provider-page bg-white">
-        <FilterBar />
+        {/* <FilterBar /> */}
         <div className="p-8 grid gap-4 grid-cols-1">
           {patients.map((patient) => (
             <PatientCard patient={patient} />
           ))}
         </div>
+        <ShowMoreBtn />
       </div>
     </div>
   );

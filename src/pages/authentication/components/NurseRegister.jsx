@@ -118,12 +118,15 @@ const NurseRegister = () => {
     // Perform API call (including error handling):
     setTimeout(() => {
       setIsLoading(true);
-      fetch("", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      fetch(
+        "https://dawiny-backend-48lm.vercel.app/api/v1/auth/nurse/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
 
-        body: JSON.stringify(inputValues),
-      }).then(() => {
+          body: JSON.stringify(inputValues),
+        }
+      ).then(() => {
         console.log("Registration successful!");
         navigate("/login");
       });
@@ -232,8 +235,11 @@ const NurseRegister = () => {
           />
 
           {/* image */}
+          <hr />
+          <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
+            Upload your image
+          </h1>
           <div className="flex items-center space-x-4 mb-4">
-            <label htmlFor="photo">Image</label>
             <input
               type="file"
               id="image"
@@ -263,9 +269,7 @@ const NurseRegister = () => {
                   checked={selectedSkills.includes(skill)}
                   onChange={() => handleCheckboxChange(skill)}
                 />
-                <span className="ml-2 text-sm">
-                  {skill}
-                </span>
+                <span className="ml-2 text-sm">{skill}</span>
               </label>
             ))}
           </div>

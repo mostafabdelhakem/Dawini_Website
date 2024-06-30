@@ -47,7 +47,7 @@ const Profile = () => {
         method: "POST",
         body: JSON.stringify(inputValues),
       }).then(() => {
-        console.log("Registration successful!");
+        console.log("Data Updated successfully");
         navigate("/login");
       });
     }, 2000);

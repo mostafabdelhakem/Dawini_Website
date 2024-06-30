@@ -8,7 +8,7 @@ const NotFound = () => {
         <h1 className="gradient-text section-title text-center mb-5">
           Sorry, That page cannot be found!
         </h1>
-        <Link className="flex justify-center text-lg" to="/">
+        <Link className="flex justify-center text-lg underline" to="/">
           Back to the Homepage
         </Link>
       </div>

@@ -81,7 +81,7 @@ const DoctorRegister = () => {
       specialization,
       fees,
     ];
-    
+
     // Concisely check if any field is empty:
     if (inputValues.some((value) => !value)) {
       // Handle empty fields:
@@ -95,11 +95,14 @@ const DoctorRegister = () => {
     // Perform API call (including error handling):
     setTimeout(() => {
       setIsLoading(true);
-      fetch("https://dawiny-backend-48lm.vercel.app/api/v1/auth/patient/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(inputValues),
-      }).then(() => {
+      fetch(
+        "https://dawiny-backend-48lm.vercel.app/api/v1/auth/doctor/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(inputValues),
+        }
+      ).then(() => {
         console.log("Registration successful!");
         navigate("/login");
       });
@@ -198,8 +201,11 @@ const DoctorRegister = () => {
           />
 
           {/* image */}
+          <hr />
+          <h1 className="gradient-text text-center text-xl font-bold mt-4 mb-4">
+            Upload your image
+          </h1>
           <div className="flex items-center space-x-4 mb-4">
-            <label htmlFor="photo">Image</label>
             <input
               type="file"
               id="image"

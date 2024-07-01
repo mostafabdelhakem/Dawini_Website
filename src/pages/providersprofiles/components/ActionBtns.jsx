@@ -5,7 +5,9 @@ const BackBtn = ({ patientId, role }) => {
 
   return (
     <button
-      onClick={() => navigate(`/patienthome/${patientId}/findprovider/${role}`)}
+      onClick={() =>
+        navigate(`/login/patienthome/${patientId}/findprovider/${role}`)
+      }
       className="gradient-text border rounded-lg px-10 py-2 font-bold"
     >
       &lt; GO BACK
@@ -18,7 +20,7 @@ const BookingBtn = ({ patientId, role, providerId }) => {
 
   const routeChange = () => {
     navigate(
-      `/patienthome/${patientId}/findprovider/${role}/providerprofile/${providerId}/bookingpage`
+      `/login/patienthome/${patientId}/findprovider/${role}/providerprofile/${providerId}/bookingpage`
     );
   };
 

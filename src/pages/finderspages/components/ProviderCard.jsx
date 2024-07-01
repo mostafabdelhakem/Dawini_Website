@@ -44,7 +44,7 @@ const DoctorOrNurseCard = ({ provider }) => {
   let navigate = useNavigate();
   const routeChange = () => {
     navigate(
-      `/patienthome/${patientid}/findprovider/${role}/providerprofile/${provider._id}`
+      `/login/patienthome/${patientid}/findprovider/${role}/providerprofile/${provider._id}`
     );
   };
 
@@ -57,7 +57,7 @@ const DoctorOrNurseCard = ({ provider }) => {
             ? DrImage
             : NurseImage
         }
-        alt={`Provider Image`}
+        alt={`Provider`}
       />
       <div className="flex-grow text-center md:text-left">
         <h3 className="text-xl font-semibold">

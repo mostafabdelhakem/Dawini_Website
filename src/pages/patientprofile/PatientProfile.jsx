@@ -39,7 +39,9 @@ function Reservation({ reservation }) {
 }
 
 function PatientProfile() {
-  const { patientid } = useParams();
+  let { patientid } = useParams();
+  patientid = patientid.split(":")[1];
+  console.log(patientid);
   const patientByIDEndPoint = `https://dawiny-backend-48lm.vercel.app/api/v1/patients/${patientid}`;
 
   const { data: patient, isPending, error } = useFetch(patientByIDEndPoint);

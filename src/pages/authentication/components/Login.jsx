@@ -27,7 +27,7 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Login success", data);
-        navigate(`${data.user.role}home/:${data.user.userDetails._id}`);
+        navigate(`${data.user.role}home/${data.user.userDetails._id}`);
       } else {
         console.error("Login failed:", response.statusText);
         setShowError(true);

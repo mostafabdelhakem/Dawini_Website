@@ -16,7 +16,7 @@ const ProviderInfo = ({ provider, role }) => {
               ? DrImage
               : NurseImage
           }
-          alt={`Provider Image`}
+          alt={`Provider`}
         />
         <div className="flex-grow text-center md:text-left">
           <h3 className="text-xl font-semibold">
@@ -60,7 +60,7 @@ const BookingInfo = ({ provider, role }) => {
 
   const handleConfirmBtn = async () => {
     const requestedAppointmentObj = {
-      patientId: patientid,
+      patientId: patientid.split(":")[1],
       providerId: providerid,
       date: appointment.date.split("T")[0],
       time: appointment.time,
@@ -82,6 +82,7 @@ const BookingInfo = ({ provider, role }) => {
       );
 
       if (!response.ok) {
+        console.log(response.error);
         throw new Error("Failed to book appointment");
       }
 
@@ -100,7 +101,7 @@ const BookingInfo = ({ provider, role }) => {
 
         // Delay navigation after 3 seconds
         setTimeout(() => {
-          navigate(`/patienthome/${patientid}`);
+          navigate(`/login/patienthome/${patientid}`);
         }, 2000); // 3000 milliseconds = 3 seconds
       }
       // Handle any further actions after successful booking

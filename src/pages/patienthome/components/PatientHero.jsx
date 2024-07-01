@@ -24,7 +24,7 @@ const PatientHeroCategoryNavigator = ({ categoryName, imgSrc, role }) => {
   const { patientid } = useParams();
   const navigate = useNavigate();
   function handleClicks() {
-    navigate(`/patienthome/${patientid}/findprovider/${role}`);
+    navigate(`/login/patienthome/${patientid}/findprovider/${role}`);
   }
 
   return (

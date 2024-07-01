@@ -52,27 +52,30 @@ function App() {
           <Route path="/nurse/register" element={<NurseRegister />} />
 
           {/* Patient Home page */}
-          <Route path="/patienthome/:patientid" element={<PatientHome />} />
+          <Route
+            path="login/patienthome/:patientid"
+            element={<PatientHome />}
+          />
 
           {/* Find Provider Pages */}
           <Route
-            path="/patienthome/:patientid/findprovider/:role"
+            path="login/patienthome/:patientid/findprovider/:role"
             element={<FindProvider />}
           />
 
           {/* Profiles */}
           <Route
-            path="/patienthome/:patientid/findprovider/:role/providerprofile/:providerid"
+            path="login/patienthome/:patientid/findprovider/:role/providerprofile/:providerid"
             element={<ProviderProfile />}
           />
           <Route
-            path="/patienthome/:patientid/patientprofile/"
+            path="login/patienthome/:patientid/patientprofile/"
             element={<PatientProfile />}
           />
 
           {/* Booking */}
           <Route
-            path="/patienthome/:patientid/findprovider/:role/providerprofile/:providerid/bookingpage"
+            path="login/patienthome/:patientid/findprovider/:role/providerprofile/:providerid/bookingpage"
             element={<BookingPage />}
           />
 

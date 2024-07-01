@@ -27,7 +27,7 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Login success", data);
-        navigate(`${data.role}home/:${data.id}`);
+        navigate(`${data.user.role}home/:${data.user.userDetails._id}`);
       } else {
         console.error("Login failed:", response.statusText);
         setShowError(true);
@@ -68,8 +68,10 @@ const Login = () => {
             />
           </div>
           {/* button */}
-          <button className="btn w-full">Login</button>
+          <button className="btn w-full mt-5">Login</button>
         </form>
+
+        {/* showing warning if one of them is wrong */}
         {showError && (
           <div className="p-4 mt-4 text-center">
             <p className="font-bold">Login failed:</p>
@@ -78,7 +80,10 @@ const Login = () => {
         )}
 
         {/* don't have an account */}
-        <Link className="mt-10 w-full flex justify-center pt-9 font-bold underline" to="/switcher">
+        <Link
+          className="mt-10 w-full flex justify-center pt-9 font-bold underline"
+          to="/switcher"
+        >
           Don't have an account
         </Link>
       </div>
@@ -87,3 +92,11 @@ const Login = () => {
 };
 
 export default Login;
+
+// email: mohamed.ali@example.com
+// password: securePassword123
+
+// -----------------------------------
+
+// email: john.doe@example.com
+// password: securepassword123

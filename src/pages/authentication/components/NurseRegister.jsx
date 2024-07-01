@@ -34,12 +34,12 @@ const NurseRegister = () => {
   const [phoneNumber, setPhoneNumber] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [city, setCity] = useState();
+  const [location, setLocation] = useState();
   const [dateOfBirth, setDateOfBirth] = useState();
   const [image, setImage] = useState();
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [description, setDescription] = useState();
-  const [fees, setFees] = useState();
+  const [appointmentFees, setFees] = useState();
 
   const [frontImage, setFrontImage] = useState(null);
   const [backImage, setBackImage] = useState(null);
@@ -98,12 +98,12 @@ const NurseRegister = () => {
       phoneNumber,
       email,
       password,
-      city,
+      location,
       dateOfBirth,
       image,
       selectedSkills,
       description,
-      fees,
+      appointmentFees,
     ];
     // Concisely check if any field is empty:
     if (inputValues.some((value) => !value)) {
@@ -220,8 +220,8 @@ const NurseRegister = () => {
             required
             className={`w-full p-2 border rounded-md text-sm mb-4 focus:ring-2 focus:ring-primary focus:ring-opacity-50`}
             placeholder="City"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
           />
 
           {/* Birth date */}
@@ -280,7 +280,7 @@ const NurseRegister = () => {
             type="number"
             className="w-full p-2 border rounded-lg text-sm mb-5"
             placeholder="Enter your fees"
-            value={fees}
+            value={appointmentFees}
             onChange={(e) => setFees(e.target.value)}
           />
 

@@ -11,7 +11,7 @@ const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [city, setCity] = useState();
+  const [location, setLocation] = useState();
   const [dateOfBirth, setDateOfBirth] = useState();
   const [image, setImage] = useState();
   const [frontImage, setFrontImage] = useState(null);
@@ -71,9 +71,8 @@ const Register = () => {
       phoneNumber,
       email,
       password,
-      city,
+      location,
       dateOfBirth,
-      image,
     ];
     // Concisely check if any field is empty:
     if (inputValues.some((value) => !value)) {
@@ -171,14 +170,14 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          {/* City */}
+          {/* location */}
           <input
             type="text"
             required
             className={`w-full p-2 border rounded-md text-sm mb-4 focus:ring-2 focus:ring-primary focus:ring-opacity-50`}
             placeholder="City"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
           />
 
           {/* Birth date */}
